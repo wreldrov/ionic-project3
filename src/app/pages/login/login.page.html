@@ -1,23 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>login</ion-title>
+     <div class="title-block">Актерская школа "Игра"</div> 
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <form [formGroup]="credentialsForm" (ngSubmit)="onSubmit()">
-
+<ion-content>
+  <form [formGroup]="credentialsForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="logo">
+      <img src="../../../assets/img/logo_white.png">
+    </div>
     <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" formControlName="email"></ion-input>
+      <input type="email" name="email" placeholder="Логин"/>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" formControlName="password"></ion-input>
+      <input type="password" name="password" placeholder="Пароль"/>
     </ion-item>
 
-    <ion-button expand="full" type="submit" [disabled]="!credentialsForm.valid">Login</ion-button>
-
+    <button type="submit" expand="full" color="primary" class="btn">Войти</button>
   </form>
 </ion-content>
