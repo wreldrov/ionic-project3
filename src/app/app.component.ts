@@ -28,7 +28,7 @@ export class AppComponent {
     {
       title: 'Рассписания',
       url: '/schedule',
-      icon: 'list',
+      icon: 'paper',
       roles: ['admin', 'teacher', 'student']
     },
     {
