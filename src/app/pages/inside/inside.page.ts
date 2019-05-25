@@ -23,7 +23,7 @@ export class InsidePage implements OnInit {
 
   loadUserInfo() {
     this.authService.getUserData().subscribe(res => {
-      this.data = res['msg'];
+      this.data = res['data']['user']['email'];
     });
   }
 

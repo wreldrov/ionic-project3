@@ -10,13 +10,14 @@
       <img src="../../../assets/img/logo_white.png">
     </div>
     <ion-item>
-      <input type="email" name="email" placeholder="Логин"/>
+      <input type="email" name="email" formControlName="email" placeholder="Логин"/>
     </ion-item>
 
     <ion-item>
-      <input type="password" name="password" placeholder="Пароль"/>
+      <input type="password" name="password" formControlName="password" placeholder="Пароль"/>
     </ion-item>
+<!--    <ion-button expand="full" type="submit" color="primary" class="btn" [disabled]="!credentialsForm.valid">Login</ion-button>-->
 
-    <button type="submit" expand="full" color="primary" class="btn">Войти</button>
+    <button type="submit" expand="full" color="primary" class="btn" [disabled]="!credentialsForm.valid">Войти</button>
   </form>
 </ion-content>

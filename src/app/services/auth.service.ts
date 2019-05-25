@@ -1,11 +1,11 @@
 import { Platform, AlertController } from '@ionic/angular';
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Storage } from '@ionic/storage';
 import { environment } from '../../environments/environment';
 import { tap, catchError } from 'rxjs/operators';
-import {BehaviorSubject, Observable} from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 const TOKEN_KEY = 'access_token';
 
@@ -32,8 +32,6 @@ export class AuthService {
   }
 
   checkToken() {
-    console.log('check token');
-    this.storage.get(TOKEN_KEY).then(token => { console.log(token); });
     this.storage.get(TOKEN_KEY).then(token => {
       if (token) {
         const decoded = this.helper.decodeToken(token);
@@ -99,26 +97,4 @@ export class AuthService {
     });
     alert.then(alert => alert.present());
   }
-
-  // buildHeaders() {
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     withCredentials: 'true'
-  //   });
-  //
-  //   return this.storage.get(TOKEN_KEY).then((user) => {
-  //     if (user) {
-  //       const info = JSON.parse(user);
-  //       console.log(info.token);
-  //       headers.append('Authorization', 'Bearer ' + info.token);
-  //       return headers;
-  //     }
-  //   });
-  // }
-  //
-  // get(url) {
-  //   return Observable
-  //       .fromPromise(this.buildHeaders())
-  //       .switchMap((headers) => this.http.get(url, { headers: headers }));
-  // }
 }
