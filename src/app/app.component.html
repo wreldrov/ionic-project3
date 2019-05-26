@@ -1,7 +1,7 @@
 <ion-app>
   <ion-split-pane>
     <ion-menu>
-      <ion-content>
+      <ion-content *ngIf="isAuthenticated()">
         <div class="content">
           <ion-list>
               <div class="avatar">
@@ -12,8 +12,8 @@
                   <h3 class="name">Teacher Teacherov</h3>
                     <a href="#" class="avatar-email">teacherschool@gmail.com</a>
               </div>
-            <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-              <ion-item  [routerDirection]="'root'" [routerLink]="[p.url]">
+            <ion-menu-toggle auto-hide="false" *ngFor="let p of getMenu()">
+              <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
                 <ion-icon slot="start" [name]="p.icon"></ion-icon>
                 <ion-label>
                   {{p.title}}

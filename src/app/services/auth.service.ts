@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { environment } from '../../environments/environment';
 import { tap, catchError } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
+import {Router} from '@angular/router';
 
 const TOKEN_KEY = 'access_token';
 
@@ -16,6 +17,7 @@ export class AuthService {
 
   url = environment.url;
   user = null;
+  authUser = null;
   token = null;
   authenticationState = new BehaviorSubject(false);
 
@@ -25,6 +27,7 @@ export class AuthService {
       private storage: Storage,
       private plt: Platform,
       private alertController: AlertController,
+      private router: Router
   ) {
     this.plt.ready().then(() => {
       this.checkToken();
@@ -70,19 +73,29 @@ export class AuthService {
   }
 
   getUserData() {
-    let header = new HttpHeaders();
-    header = header.append('Content-Type', 'application/json');
-    header = header.append('Authorization', `Bearer ${this.token}`);
-    return this.http.get(`${this.url}/api/auth/me`, {headers: header}).pipe(
-        catchError(e => {
-          const status = e.status;
-          if (status === 401) {
-            this.showAlert('You are not authorized for this!');
-            this.logout();
-          }
-          throw new Error(e);
-        })
-    );
+    if (this.authUser === null) {
+      if (this.token !== null) {
+        let header = new HttpHeaders();
+        header = header.append('Content-Type', 'application/json');
+        header = header.append('Authorization', `Bearer ${this.token}`);
+        return this.http.get(`${this.url}/api/auth/me`, {headers: header}).pipe(
+            tap(res => {
+              this.authUser = res;
+            }),
+            catchError(e => {
+              const status = e.status;
+              if (status === 401) {
+                this.showAlert('You are not authorized for this!');
+                this.logout();
+              }
+              throw new Error(e);
+            })
+        );
+      } else {
+        this.router.navigate(['login']);
+      }
+    }
+    return this.authUser;
   }
 
   isAuthenticated() {

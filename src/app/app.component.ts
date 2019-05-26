@@ -12,42 +12,84 @@ import {Router} from '@angular/router';
 })
 export class AppComponent {
 
-  public appPages = [
+  user = null;
+
+  public appPagesAdmin = [
     {
       title: 'Профиль',
       url: '/profile',
       icon: 'person',
-      roles: ['admin', 'teacher', 'student']
     },
     {
       title: 'Группы',
       url: '/groups',
       icon: 'list',
-      roles: ['admin', 'teacher']
     },
     {
       title: 'Рассписания',
       url: '/schedule',
       icon: 'paper',
-      roles: ['admin', 'teacher', 'student']
-    },
-    {
-      title: 'Домашное задание',
-      url: '/homework',
-      icon: 'list-box',
-      roles: ['student']
     },
     {
       title: 'Учителя',
       url: '/teachers',
       icon: 'school',
-      roles: ['admin', 'student']
     },
     {
       title: 'Messenger',
       url: '/messenger',
       icon: 'chatboxes',
-      roles: ['admin', 'teacher', 'student']
+    }
+  ];
+
+  public appPagesTeacher = [
+    {
+      title: 'Профиль',
+      url: '/profile',
+      icon: 'person',
+    },
+    {
+      title: 'Группы',
+      url: '/groups',
+      icon: 'list',
+    },
+    {
+      title: 'Рассписания',
+      url: '/schedule',
+      icon: 'paper',
+    },
+    {
+      title: 'Messenger',
+      url: '/messenger',
+      icon: 'chatboxes',
+    }
+  ];
+
+  public appPagesStudent = [
+    {
+      title: 'Профиль',
+      url: '/profile',
+      icon: 'person',
+    },
+    {
+      title: 'Рассписания',
+      url: '/schedule',
+      icon: 'paper',
+    },
+    {
+      title: 'Домашное задание',
+      url: '/homework',
+      icon: 'list-box',
+    },
+    {
+      title: 'Учителя',
+      url: '/teachers',
+      icon: 'school',
+    },
+    {
+      title: 'Messenger',
+      url: '/messenger',
+      icon: 'chatboxes',
     }
   ];
 
@@ -76,14 +118,30 @@ export class AppComponent {
     });
   }
 
-  user() {
+  getUser() {
     this.auth.getUserData().subscribe(res => {
-      return res['data']['user'];
+      this.user = res['data']['user'];
+      return this.user;
     });
   }
 
-  checkRoles(roles) {
-    console.log(this.user());
-    return true;
+  isAuthenticated() {
+    return this.auth.isAuthenticated();
+  }
+
+  getMenu() {
+    if (this.isAuthenticated()) {
+      if (this.user === null) {
+        this.user = this.getUser();
+      }
+      if (this.user['role']['id'] === 1) {
+        return this.appPagesAdmin;
+      } else if (this.user['role']['id'] === 2) {
+        return this.appPagesTeacher;
+      } else {
+        return this.appPagesStudent;
+      }
+    }
+    return [];
   }
 }
