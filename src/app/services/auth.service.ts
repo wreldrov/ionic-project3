@@ -9,15 +9,24 @@ import { BehaviorSubject } from 'rxjs';
 import {Router} from '@angular/router';
 
 const TOKEN_KEY = 'access_token';
-
+const DefaultUser = {
+  email: '',
+  id: '',
+  role: {
+    created_at: '',
+    id: '',
+    name: '',
+    updated_at: ''
+  }
+};
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
   url = environment.url;
   user = null;
-  authUser = null;
+  authUser = new BehaviorSubject<any>(DefaultUser);
+  authUser2 = null;
   token = null;
   authenticationState = new BehaviorSubject(false);
 
@@ -53,11 +62,12 @@ export class AuthService {
   login(credentials) {
     return this.http.post(`${this.url}/api/auth/login`, credentials)
         .pipe(
-            tap(res => {
-              this.token = res['token'];
-              this.storage.set(TOKEN_KEY, res['token']);
-              this.user = this.helper.decodeToken(res['token']);
+            tap((res: any) => {
+              this.token = res.token;
+              this.storage.set(TOKEN_KEY, res.token);
+              this.user = this.helper.decodeToken(res.token);
               this.authenticationState.next(true);
+              this.getUserData();
             }),
             catchError(e => {
               this.showAlert(e.error.msg);
@@ -73,14 +83,14 @@ export class AuthService {
   }
 
   getUserData() {
-    if (this.authUser === null) {
+    if (this.authUser2 === null) {
       if (this.token !== null) {
         let header = new HttpHeaders();
         header = header.append('Content-Type', 'application/json');
         header = header.append('Authorization', `Bearer ${this.token}`);
         return this.http.get(`${this.url}/api/auth/me`, {headers: header}).pipe(
-            tap(res => {
-              this.authUser = res;
+            tap((res: any) => {
+              return this.authUser.next(res.data.user);
             }),
             catchError(e => {
               const status = e.status;
@@ -108,6 +118,6 @@ export class AuthService {
       header: 'Error',
       buttons: ['OK']
     });
-    alert.then(alert => alert.present());
+    alert.then((alert: any) => alert.present());
   }
 }

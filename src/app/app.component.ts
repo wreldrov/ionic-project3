@@ -6,90 +6,61 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {AuthService} from './services/auth.service';
 import {Router} from '@angular/router';
 
+interface Iuser {
+  email: string;
+  id: number;
+  role: Irole;
+}
+interface Irole {
+  created_at: string;
+  id: number;
+  name: string;
+  updated_at: string;
+}
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
 
-  user = null;
+  user: Iuser;
 
-  public appPagesAdmin = [
+  public appMenus = [
     {
       title: 'Профиль',
       url: '/profile',
       icon: 'person',
+      roles: ['Admin', 'Teacher', 'Student']
     },
     {
       title: 'Группы',
       url: '/groups',
       icon: 'list',
+      roles: ['Admin', 'Teacher']
     },
     {
       title: 'Рассписания',
       url: '/schedule',
       icon: 'paper',
-    },
-    {
-      title: 'Учителя',
-      url: '/teachers',
-      icon: 'school',
-    },
-    {
-      title: 'Messenger',
-      url: '/messenger',
-      icon: 'chatboxes',
-    }
-  ];
-
-  public appPagesTeacher = [
-    {
-      title: 'Профиль',
-      url: '/profile',
-      icon: 'person',
-    },
-    {
-      title: 'Группы',
-      url: '/groups',
-      icon: 'list',
-    },
-    {
-      title: 'Рассписания',
-      url: '/schedule',
-      icon: 'paper',
-    },
-    {
-      title: 'Messenger',
-      url: '/messenger',
-      icon: 'chatboxes',
-    }
-  ];
-
-  public appPagesStudent = [
-    {
-      title: 'Профиль',
-      url: '/profile',
-      icon: 'person',
-    },
-    {
-      title: 'Рассписания',
-      url: '/schedule',
-      icon: 'paper',
+      roles: ['Admin', 'Teacher', 'Student']
     },
     {
       title: 'Домашное задание',
       url: '/homework',
       icon: 'list-box',
+      roles: ['Student']
     },
     {
       title: 'Учителя',
       url: '/teachers',
       icon: 'school',
+      roles: ['Admin', 'Student']
     },
     {
       title: 'Messenger',
       url: '/messenger',
       icon: 'chatboxes',
+      roles: ['Admin', 'Teacher', 'Student']
     }
   ];
 
@@ -100,6 +71,9 @@ export class AppComponent {
     private auth: AuthService,
     private router: Router,
   ) {
+    this.auth.authUser.subscribe((res: Iuser) => {
+      this.user = res;
+    });
     this.initializeApp();
   }
 
@@ -110,6 +84,9 @@ export class AppComponent {
 
       this.auth.authenticationState.subscribe(state => {
         if (state) {
+          if (this.user.role.name === 'Admin') {
+            this.router.navigate(['inside']);
+          }
           this.router.navigate(['inside']);
         } else {
           this.router.navigate(['login']);
@@ -118,30 +95,7 @@ export class AppComponent {
     });
   }
 
-  getUser() {
-    this.auth.getUserData().subscribe(res => {
-      this.user = res['data']['user'];
-      return this.user;
-    });
-  }
-
   isAuthenticated() {
     return this.auth.isAuthenticated();
-  }
-
-  getMenu() {
-    if (this.isAuthenticated()) {
-      if (this.user === null) {
-        this.user = this.getUser();
-      }
-      if (this.user['role']['id'] === 1) {
-        return this.appPagesAdmin;
-      } else if (this.user['role']['id'] === 2) {
-        return this.appPagesTeacher;
-      } else {
-        return this.appPagesStudent;
-      }
-    }
-    return [];
   }
 }

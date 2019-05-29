@@ -18,18 +18,14 @@ export class InsidePage implements OnInit {
       private storage: Storage,
       private toastController: ToastController
   ) {
-    // this.authService.getUserData().subscribe(res => {
-    //   this.user = res['data']['user'];
-    // });
   }
 
   ngOnInit() {
   }
 
   loadUserInfo() {
-    console.log(this.authService.getUserData())
-    this.authService.getUserData().subscribe(res => {
-      this.data = res['data']['user']['email'];
+    this.authService.getUserData().subscribe((res: any) => {
+      this.data = res.email;
     });
   }
 
@@ -47,24 +43,4 @@ export class InsidePage implements OnInit {
 
     toast.then(toast => toast.present());
   }
-
-    getUser() {
-      this.authService.getUserData().subscribe(res => {
-        this.user = res['data']['user'];
-        return this.user;
-      });
-    }
-
-    isAuthenticated() {
-        return this.authService.isAuthenticated();
-    }
-
-    checkRoles(roles) {
-        if (this.isAuthenticated()) {
-            this.authService.getUserData().subscribe(res => {
-                console.log(roles.indexOf(res['data']['user']['role']['name']) !== -1);
-            });
-        }
-        console.log(false);
-    }
 }

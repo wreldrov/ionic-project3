@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'inside',
     loadChildren: './pages/inside/inside.module#InsidePageModule',
     canActivate: [AuthGuardService]
-  },
+  },  { path: 'group', loadChildren: './pages/group/group.module#GroupPageModule' },
+
 ];
 
 @NgModule({
