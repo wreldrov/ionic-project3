@@ -67,7 +67,7 @@ export class AuthService {
               this.storage.set(TOKEN_KEY, res.token);
               this.user = this.helper.decodeToken(res.token);
               this.authenticationState.next(true);
-              this.getUserData();
+              this.getUserData().subscribe();
             }),
             catchError(e => {
               this.showAlert(e.error.msg);
@@ -118,6 +118,6 @@ export class AuthService {
       header: 'Error',
       buttons: ['OK']
     });
-    alert.then((alert: any) => alert.present());
+    alert.then(alert => alert.present());
   }
 }

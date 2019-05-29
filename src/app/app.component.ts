@@ -84,9 +84,6 @@ export class AppComponent {
 
       this.auth.authenticationState.subscribe(state => {
         if (state) {
-          if (this.user.role.name === 'Admin') {
-            this.router.navigate(['inside']);
-          }
           this.router.navigate(['inside']);
         } else {
           this.router.navigate(['login']);
