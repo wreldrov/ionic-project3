@@ -84,6 +84,13 @@ export class AppComponent {
 
       this.auth.authenticationState.subscribe(state => {
         if (state) {
+          this.auth.authUser.subscribe((res: Iuser) => {
+            if (res.role.name === 'Admin') {
+              this.router.navigate(['/admin/(home:home)']);
+            } else if (res.role.name === 'Teacher') {
+              this.router.navigate(['groups']);
+            }
+          });
           this.router.navigate(['inside']);
         } else {
           this.router.navigate(['login']);
