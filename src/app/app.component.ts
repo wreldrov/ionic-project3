@@ -7,15 +7,21 @@ import {AuthService} from './services/auth.service';
 import {Router} from '@angular/router';
 
 interface Iuser {
-  email: string;
   id: number;
+  email: string;
+  surname: string;
+  name: string;
+  gender: boolean;
+  address: string;
+  image: string;
+  birthday: string;
+  phone_number: string;
   role: Irole;
 }
+
 interface Irole {
-  created_at: string;
   id: number;
   name: string;
-  updated_at: string;
 }
 @Component({
   selector: 'app-root',
@@ -84,13 +90,13 @@ export class AppComponent {
 
       this.auth.authenticationState.subscribe(state => {
         if (state) {
-          this.auth.authUser.subscribe((res: Iuser) => {
-            if (res.role.name === 'Admin') {
-              this.router.navigate(['/admin/(home:home)']);
-            } else if (res.role.name === 'Teacher') {
-              this.router.navigate(['groups']);
-            }
-          });
+          // this.auth.authUser.subscribe((res: Iuser) => {
+          //   if (res.role.name === 'Admin') {
+          //     this.router.navigate(['/admin']);
+          //   } else if (res.role.name === 'Teacher') {
+          //     this.router.navigate(['groups']);
+          //   }
+          // });
           this.router.navigate(['inside']);
         } else {
           this.router.navigate(['login']);
