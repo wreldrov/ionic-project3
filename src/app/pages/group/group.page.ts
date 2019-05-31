@@ -64,7 +64,7 @@ export class GroupPage implements OnInit {
     let header = new HttpHeaders();
     header = header.append('Content-Type', 'application/json');
     header = header.append('Authorization', `Bearer ${this.auth.token}`);
-    return this.http.get(`${this.auth.url}/api/igra/groups/${this.id}`, {headers: header}).pipe(
+    return this.http.get(`${this.auth.url}/api/igra/group/${this.id}`, {headers: header}).pipe(
         map((res: any) => {
           return res.data;
         }),

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, map} from 'rxjs/operators';
-import {Router} from '@angular/router';
 
 interface Iuser {
   id: number;
@@ -73,9 +72,8 @@ export class GroupsPage implements OnInit {
     let header = new HttpHeaders();
     header = header.append('Content-Type', 'application/json');
     header = header.append('Authorization', `Bearer ${this.auth.token}`);
-    return this.http.get(`${this.auth.url}/api/igra/groups${filter}`, {headers: header}).pipe(
+    return this.http.get(`${this.auth.url}/api/igra/group${filter}`, {headers: header}).pipe(
         map((res: any) => {
-
           return res.data;
         }),
         catchError(e => {
