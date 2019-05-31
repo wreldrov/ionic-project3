@@ -24,7 +24,7 @@ interface Igroup {
   id: number;
   name: string;
   course: Icourse;
-  teacher: Iuser[];
+  teachers: Iuser[];
 }
 interface Icourse {
   id: number;

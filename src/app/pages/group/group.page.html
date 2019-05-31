@@ -1,9 +1,29 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>group</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Группы
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="groups" *ngIf="group">
+  <form>
+    <label>Преподаватели</label>
+    <ul *ngFor="let teacher of group.teachers">
+      <img src="{{ teacher.image }}">
+    </ul>
+  </form>
+  <ul class="groups-list" *ngFor="let student of group.students">
+    <li>
+        <div class="left">
+          <p class="name">{{ student.id +' '+ student.surname +' '+ student.name}}</p>
+        </div>
+        <div class="right">
+          <button class="next-btn"></button>
+        </div>
+    </li>
+  </ul>
 </ion-content>
