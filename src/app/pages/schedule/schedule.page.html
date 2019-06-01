@@ -17,7 +17,7 @@
     <ul class="schedule-list">
       <!-- класс active текущий, класс next следующий -->
       <li class="active" *ngFor="let lesson of lessons">
-        <a href="#">
+        <a [routerLink]="['/lesson/'+ lesson.id]">
           <div class="left">
             <span class="time">{{ lesson.lesson_time }}</span>
             <h4 class="date">{{ getDateString(lesson.lesson_date) }}</h4>

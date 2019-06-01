@@ -2,7 +2,7 @@
     <ion-toolbar>
       <div class="title-block">
           <ion-menu-button></ion-menu-button>
-            <h4 class="page-title">Расписание</h4>
+            <h4 class="page-title" *ngIf="group">{{ group.name }}</h4>
       </div> 
     </ion-toolbar>
   </ion-header>
@@ -13,15 +13,18 @@
     <label>Преподаватели</label>
     <ul class="photos">
       <li *ngFor="let teacher of group.teachers">
-        <!-- <img src="{{ teacher.image }}"> -->
-        <img src="../../../assets/img/teacher-1.png">
+         <img src="{{ teacher.image }}">
       </li>
     </ul>
   </form>
   <ul class="student-list">
     <li *ngFor="let student of group.students">
         <div class="left">
-          <p class="name">{{ student.id +' '+ student.surname +' '+ student.name}}</p>
+          <p class="name">
+              {{ student.id }}
+              <img src="{{ student.image }}"><i *ngIf="student.image === null" class="fa fa-user">{{student.surname[0]}}</i>
+              {{ student.surname +' '+ student.name}}
+          </p>
         </div>
         <div class="right">
           <button class="message-btn"></button>

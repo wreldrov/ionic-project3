@@ -36,37 +36,37 @@ export class AppComponent {
       title: 'Профиль',
       url: '/profile',
       icon: 'person',
-      roles: ['Admin', 'Teacher', 'Student']
+      roles: ['admin', 'teacher', 'student']
     },
     {
       title: 'Группы',
       url: '/groups',
       icon: 'list',
-      roles: ['Admin', 'Teacher']
+      roles: ['admin', 'teacher']
     },
     {
       title: 'Рассписания',
       url: '/schedule',
       icon: 'paper',
-      roles: ['Admin', 'Teacher', 'Student']
+      roles: ['admin', 'teacher', 'student']
     },
     {
       title: 'Домашное задание',
       url: '/homework',
       icon: 'list-box',
-      roles: ['Student']
+      roles: ['student']
     },
     {
       title: 'Учителя',
       url: '/teachers',
       icon: 'school',
-      roles: ['Admin', 'Student']
+      roles: ['admin', 'student']
     },
     {
       title: 'Messenger',
       url: '/messenger',
       icon: 'chatboxes',
-      roles: ['Admin', 'Teacher', 'Student']
+      roles: ['admin', 'teacher', 'student']
     }
   ];
 
@@ -79,6 +79,7 @@ export class AppComponent {
   ) {
     this.auth.authUser.subscribe((res: Iuser) => {
       this.user = res;
+      console.log(this.user);
     });
     this.initializeApp();
   }

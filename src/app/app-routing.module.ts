@@ -10,6 +10,10 @@ const routes: Routes = [
   { path: 'schedule',   loadChildren: './pages/schedule/schedule.module#SchedulePageModule', canActivate: [AuthGuardService] },
   { path: 'group/:id',  loadChildren: './pages/group/group.module#GroupPageModule',          canActivate: [AuthGuardService] },
   { path: 'lesson/:id', loadChildren: './pages/lesson/lesson.module#LessonPageModule',       canActivate: [AuthGuardService] },
+  { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
+  { path: 'messenger', loadChildren: './pages/messenger/messenger.module#MessengerPageModule' },
+  { path: 'teachers', loadChildren: './pages/teachers/teachers.module#TeachersPageModule' },
+
 
 ];
 
