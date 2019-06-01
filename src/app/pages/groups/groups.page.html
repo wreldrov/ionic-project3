@@ -1,15 +1,14 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Группы
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar>
+      <div class="title-block">
+          <ion-menu-button></ion-menu-button>
+            <h4 class="page-title">Расписание</h4>
+      </div> 
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content class="groups">
+  <div class="content-all">
   <form class="search">
     <input type="search" placeholder="Поиск" [(ngModel)]="name" name="name" (change)="filterGroupsData()">
     <button class="search-btn">
@@ -28,4 +27,5 @@
       </a>
     </li>
   </ul>
+</div>
 </ion-content>

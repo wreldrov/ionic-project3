@@ -1,5 +1,20 @@
-page-about{
+
   ion-content{
+    position: relative;
+    .content-all{
+      position: relative;
+      z-index: 1;
+    }
+    &:after{
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: #ECEFF1;
+      z-index: 0;
+    }
     h4{
       margin: 0;
     }
@@ -11,10 +26,10 @@ page-about{
       height: 32px;
       display: flex;
       justify-content: space-between;
-      input[type="date"]{
+      ion-datetime{
         border: none;
         position: relative;
-        width: 83%;
+        width: 86%;
         background-color: #fff;
         height: 32px;
         padding: 8px 0px 8px 12px;
@@ -25,6 +40,9 @@ page-about{
           right: 0;
           left: 0;
           border-bottom: 2px solid #1BE1AF;
+        }
+        button{
+          border: none !important;
         }
       }
       .schedule-btn{
@@ -41,7 +59,7 @@ page-about{
           left: 0;
           right: 0;
           bottom: 0;
-          //background: url(../../assets/imgs/schedule.PNG) no-repeat center center;
+          background: url(../../../assets/img/schedule.PNG) no-repeat center center;
           background-size: contain;
         }
       }
@@ -75,13 +93,14 @@ page-about{
               font-size: 10px;
               position: relative;
               padding-left: 20px;
+              margin-top: 3px;
               &:after{
                 content: '';
                 position: absolute;
-                top: 2px;
+                top: 0px;
                 left: 0;
                 bottom: 0;
-                //background: url(../../assets/imgs/date.PNG) no-repeat center center;
+                background: url(../../../assets/img/date.PNG) no-repeat center center;
                 background-size: contain;
                 width: 10px;
                 height: 11px;
@@ -99,7 +118,7 @@ page-about{
                 top: 0;
                 right: 0;
                 bottom: 0;
-                //background: url(../../assets/imgs/location.PNG) no-repeat center center;
+                background: url(../../../assets/img/location.PNG) no-repeat center center;
                 background-size: contain;
                 width: 12px;
                 height: 12px;
@@ -119,7 +138,7 @@ page-about{
                 top: 0;
                 right: -20px;
                 bottom: 0;
-                //background: url(../../assets/imgs/list-item.PNG) no-repeat center center;
+                background: url(../../../assets/img/list-item.PNG) no-repeat center center;
                 background-size: contain;
                 width: 12px;
                 height: 12px;
@@ -137,4 +156,4 @@ page-about{
     }
   }
 
-}
+

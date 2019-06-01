@@ -1,19 +1,18 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Home
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar>
+      <div class="title-block">
+          <ion-menu-button></ion-menu-button>
+            <h4 class="page-title">Igray.kz</h4>
+            <button class="logout-btn" (click)="logout()">
+              <ion-icon name="person"></ion-icon>
+            </button>
+      </div> 
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content padding>
-  Welcome to the members only area!
 
 <!--  <p>{{ user['email'] }}</p>-->
-
 
   <ion-button expand="full" (click)="loadUserInfo()">Load User Info</ion-button>
   <ion-button expand="full" (click)="logout()">Logout</ion-button>

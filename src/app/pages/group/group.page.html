@@ -1,29 +1,32 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Группы
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar>
+      <div class="title-block">
+          <ion-menu-button></ion-menu-button>
+            <h4 class="page-title">Расписание</h4>
+      </div> 
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content class="groups" *ngIf="group">
-  <form>
+<ion-content class="group" *ngIf="group">
+  <div class="content-all">
+  <form class="teachers">
     <label>Преподаватели</label>
-    <ul *ngFor="let teacher of group.teachers">
-      <img src="{{ teacher.image }}">
+    <ul class="photos">
+      <li *ngFor="let teacher of group.teachers">
+        <!-- <img src="{{ teacher.image }}"> -->
+        <img src="../../../assets/img/teacher-1.png">
+      </li>
     </ul>
   </form>
-  <ul class="groups-list" *ngFor="let student of group.students">
-    <li>
+  <ul class="student-list">
+    <li *ngFor="let student of group.students">
         <div class="left">
           <p class="name">{{ student.id +' '+ student.surname +' '+ student.name}}</p>
         </div>
         <div class="right">
-          <button class="next-btn"></button>
+          <button class="message-btn"></button>
         </div>
     </li>
   </ul>
+</div>
 </ion-content>

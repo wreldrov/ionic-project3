@@ -1,24 +1,64 @@
 
 ion-app{
+    ion-header{
+        --background: #4D1594!important;
+        ion-toolbar{
+            --background: #4D1594!important;
+            .toolbar-container{
+                --background: #4D1594!important;
+            }
+            .title-block{
+                text-align: center;
+                background-color: #4D1594;
+                color: #fff;
+                padding: 10px 0;
+                font-family: 'robotobold';
+                display: flex;
+                align-items: center;
+                .page-title{
+                    text-align: center;
+                    font-size: 22px;
+                    display: table;
+                    margin: 0 auto;
+                }
+            }
+        }
+        ion-menu-button{
+            color: #1BE1AF;
+        }
+    }
+    ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;  
+        li{
+            list-style-type: none;
+        }
+    }
+    // content (sidemenu)
     .content{
-           ion-item{
-    --inner-border-width: 0px !important;
-    padding: 5px;
-    --background: none !important;
-    &:hover{
-        background-color: rgba(124, 77, 255, 0.68);
-        --background: rgba(124, 77, 255, 0.68);
-        color: #fff !important;
-    }
-    }
+        ion-item{
+            --inner-border-width: 0px !important;
+            padding: 5px;
+            --background: none !important;
+            &:hover{
+                background-color: rgba(124, 77, 255, 0.68);
+                --background: rgba(124, 77, 255, 0.68);
+                color: #fff !important;
+            }
+        }
     .list-md{
-    padding: 0 !important;
+        padding: 0 !important;
+    }
+    ion-label{
+        font-size: 15px !important;
+        font-weight: 600;
     }
     .avatar{
-    height: 172px;
-    color: #fff;
-    padding: 20px;
-    position: relative;
+        height: 172px;
+        color: #fff;
+        padding: 20px;
+        position: relative;
     .avatar-img{
         width: 50px;
         height: 50px;
@@ -45,17 +85,24 @@ ion-app{
         margin: 30px 0 0 0;
         font-size: 16px;
     }
-    .avatar-email{
-        text-decoration: none;
-        font-size: 14px;
-        color: #fff;
-        padding: 0;
-        margin: 0;
+        .avatar-email{
+            text-decoration: none;
+            font-size: 14px;
+            color: #fff;
+            padding: 0;
+            margin: 0;
+        }
     }
+        .log_out{
+            border-top: 1px solid #BFBFBF;
+        }
     }
-    .log_out{
-    border-top: 1px solid #BFBFBF;
+}
+ion-content{
+    .inner-scroll{
+     --background: #ECEFF1 !important;
     }
-    }
-
+}
+.inner-scroll{
+    background: #ECEFF1 !important;
 }

@@ -1,34 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Рассписсание
-    </ion-title>
+    <div class="title-block">
+        <ion-menu-button></ion-menu-button>
+          <h4 class="page-title">Расписание</h4>
+    </div> 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <!-- tab расписание -->
-  <form class="schedule-form">
-    <ion-item>
-      <ion-label>Date</ion-label>
-      <ion-datetime display-format="MMM DD, YYYY" [(ngModel)]="date" name="date" (ionChange)="getFilteredLessons()"></ion-datetime>
-    </ion-item>
-  </form>
-  <ul class="schedule-list" *ngFor="let lesson of lessons">
-    <li class="active">
-      <a href="#">
-        <div class="left">
-          <h4 class="time">{{ getDateString(lesson.lesson_date) }}</h4>
-          <span class="date">{{ lesson.lesson_time }}</span>
-        </div>
-        <div class="right">
-          <p class="room">{{ lesson.room }}</p>
-          <p class="group">{{ lesson.group.name }}</p>
-        </div>
-      </a>
-    </li>
-  </ul>
+    <div class="content-all">
+    <form class="schedule-form">
+        <ion-datetime display-format="MMM/ DD/ YYYY" [(ngModel)]="date" name="date" (ionChange)="getFilteredLessons()"></ion-datetime>
+        <button class="schedule-btn" (ionChange)="getFilteredLessons()"></button>
+    </form>
+    <ul class="schedule-list">
+      <!-- класс active текущий, класс next следующий -->
+      <li class="active" *ngFor="let lesson of lessons">
+        <a href="#">
+          <div class="left">
+            <span class="time">{{ lesson.lesson_time }}</span>
+            <h4 class="date">{{ getDateString(lesson.lesson_date) }}</h4>
+          </div>
+          <div class="right">
+            <p class="room">{{ lesson.room }}</p>
+            <p class="group">{{ lesson.group.name }}</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
 </ion-content>

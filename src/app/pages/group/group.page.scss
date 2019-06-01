@@ -1,0 +1,99 @@
+ion-content{
+    position: relative;
+      .content-all{
+        position: relative;
+        z-index: 1;
+      }
+      &:after{
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: #ECEFF1;
+        z-index: 0;
+      }
+    }
+    .group{
+        .teachers{
+            height: 32px;
+            background-color: #fff;
+            width: 90%;
+            margin: 12px 18px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.1);
+            border-left: 2px solid #1BE1AF;
+            &:before{
+                content: '';
+                position: absolute;
+                left: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: url(../../../assets/img/star.PNG) no-repeat center center;
+                width: 13px;
+                height: 13px;
+                background-size: contain;
+            }
+            &:after{
+                content: '';
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: url(../../../assets/img/next.PNG) no-repeat center center;
+                background-size: contain;
+                width: 12px;
+                height: 15px;
+            }
+            label{
+                padding-left: 40px;
+                font-size: 14px;
+            }
+            .photos{
+                display: flex;
+                align-items: center;
+                li{
+                    margin: 0 2px;
+                }
+            }
+        }
+        .student-list{
+            background-color: #fff;
+            margin: 0 18px;
+            li{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 2px solid #ECEFF1;
+                p{
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+                .left{
+                    padding-left: 15px;
+                }
+                .right{
+                    padding-right: 15px;
+                    .message-btn{
+                        position: relative;
+                        background: none;
+                        border: none;
+                        &:after{
+                            content: '';
+                            position: absolute;
+                            right: 0;
+                            top: 50%;
+                            transform: translateY(-72%);
+                            background: url(../../../assets/img/message.PNG) no-repeat center center;
+                            background-size: contain;
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
