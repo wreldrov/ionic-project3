@@ -10,7 +10,22 @@ import { ProfilePage } from './profile.page';
 const routes: Routes = [
   {
     path: '',
-    component: ProfilePage
+    component: ProfilePage,
+    children: [
+      {
+        path: 'profile1',
+        loadChildren: '../profile1/profile1.module#Profile1PageModule'
+      },
+      {
+        path: 'finance',
+        loadChildren: '../finance/finance.module#FinancePageModule'
+      }
+    ]
+  },
+  {
+    path: '',
+    redirectTo: 'profile1',
+    pathMatch: 'full'
   }
 ];
 

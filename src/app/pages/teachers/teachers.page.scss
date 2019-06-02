@@ -1,0 +1,104 @@
+ion-content{
+    position: relative;
+    .content-all{
+      position: relative;
+      z-index: 1;
+    }
+    &:after{
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: #ECEFF1;
+      z-index: 0;
+    }
+    .search{
+        margin: 20px;
+        width: 90%;
+        position: relative;
+        input[type="search"]{
+          border: none;
+          background-color: #F8F8FC;
+          height: 40px;
+          border-radius: 7px;
+          width: 100%;
+          position: relative;
+          padding: 0 10px 0 40px;
+          border-bottom: 2px solid  #2DBECD;
+        }
+        .search-btn{
+            position: absolute;
+            border: none;
+            background: none;
+            top: 7px;
+            left: 10px;
+            bottom: 0;
+            width: 25px;
+            height: 25px;
+            &:after{
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: url(../../../assets/img/seacrh.PNG) no-repeat center center;
+                background-size: contain;
+            }
+        }
+    }
+}
+    .teachers{
+        .teachers-list{
+            padding: 0;
+            margin: 0 20px;
+            li{
+                height: 50px;
+                width: 100%;
+                background-color: #F8F8FC;
+                margin: 2.5px 0;
+                padding: 10px 13px;
+                a{
+                    display: flex;
+                    justify-content: space-between;
+                    .left{
+                        display: flex;
+                        img{
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 50%;
+                        }
+                        .name{
+                            font-size: 14px;
+                            color: #2DBECD;
+                            font-weight: 700;
+                            margin: 5px 0 5px 10px;
+                        }
+                    }
+                    .right{
+                        display: flex;
+                        align-items: center;
+                        .message-btn{
+                            border: none;
+                            background: none;
+                            position: relative;
+                            width: 20px;
+                            height: 16px;
+                            &:after{
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                                left: 0;
+                                bottom: 0;
+                                background: url(../../../assets/img/message.PNG)no-repeat center center;
+                                background-size: contain;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }

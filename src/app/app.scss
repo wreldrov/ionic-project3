@@ -1,5 +1,19 @@
 
 ion-app{
+    ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;  
+        li{
+            list-style-type: none;
+            a{
+                text-decoration: none;
+            }
+        }
+    }
+    button{
+        outline: none;
+    }
     ion-header{
         --background: #4D1594!important;
         ion-toolbar{
@@ -17,7 +31,7 @@ ion-app{
                 align-items: center;
                 .page-title{
                     text-align: center;
-                    font-size: 22px;
+                    font-size: 20px;
                     display: table;
                     margin: 0 auto;
                 }
@@ -25,14 +39,6 @@ ion-app{
         }
         ion-menu-button{
             color: #1BE1AF;
-        }
-    }
-    ul{
-        list-style: none;
-        padding: 0;
-        margin: 0;  
-        li{
-            list-style-type: none;
         }
     }
     // content (sidemenu)

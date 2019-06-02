@@ -1,0 +1,233 @@
+.finance-tab{
+    .content-white{
+        background: #fff;
+    }
+    .finance-list{
+        padding: 20px 15px;
+        li{
+            padding: 23px;
+            background: #fff;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.17);
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            .right{
+                h4{
+                    font-size: 12px;
+                    color: #000;
+                    font-weight: 600;
+                    margin: 0;
+                }
+                p{
+                    font-size: 8px;
+                }
+            }
+        }
+    }
+    .total-price{
+        padding: 3px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #2DBECD;
+        box-shadow: 0px 2px 4px #2DBECD;
+        border-radius: 6px;
+        margin: 0 15px;
+        color: #fff;
+        p{
+            font-size: 12px;
+        }
+        h6{
+            margin: 0;
+            font-size: 22px;
+            font-weight: bold;
+            margin-left: 15px;
+        }
+        span{
+            font-size: 22px;
+            font-weight: bold;
+            margin-left: 7px;
+        }
+    }
+}
+
+$bg-color: #F8F8FC;
+$default-size: 58px;
+$label-font-size: $default-size / 4;
+$label-font-size-redo: $default-size * 4;
+
+// -- mixins
+@mixin size($width, $height) {
+  height: $height;
+  width: $width;
+}
+
+@mixin draw-progress($progress) {
+  .pie {
+    
+    &.lesson{
+        .half-circle {
+            border-color: #7C4DFF;   
+        }
+    }
+    &.bonus{
+        .half-circle {
+            border-color: #A5CD50;   
+        }
+    }
+    &.fine{
+        .half-circle {
+            border-color: #F5A5B9;   
+        }
+    }
+
+    .left-side {
+      transform: rotate($progress * 3.6deg);
+    }
+
+    @if $progress <= 50 {
+      .right-side {
+        display: none;
+      }
+    } @else {
+      clip: rect(auto, auto, auto, auto);
+
+      .right-side {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+@mixin draw-progress--solid($progress, $color, $bg-color) {
+  background: linear-gradient(to right, $color 50%, $bg-color 50%);
+  
+  &:before {
+    @if $progress <= 50 {
+      background: $bg-color;
+      transform: rotate((100 - (50 - $progress)) / 100 * 360deg * -1);
+    } @else {
+      background: $color;
+      transform: rotate((100 - $progress) / 100 * 360deg);
+    }
+  }
+}
+
+// -- selectors
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.pie-wrapper {
+  @include size($default-size, $default-size);
+  float: left;
+  margin: 15px;
+  position: relative;
+  
+  &:nth-child(3n + 1) {
+    clear: both;
+  }
+
+  .pie {
+    @include size(100%, 100%);
+    clip: rect(0, $default-size, $default-size, $default-size / 2);
+    left: 0;
+    position: absolute;
+    top: 0;
+
+    .half-circle {
+      @include size(100%, 100%);
+      border: ($default-size / 10) solid #3498db;
+      border-radius: 50%;
+      clip: rect(0, $default-size / 2, $default-size, 0);
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .label {
+    background: $bg-color;
+    border-radius: 50%;
+    color: #ecf0f1;
+    cursor: default;
+    display: block;
+    font-size: 20px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 18px;
+
+    .smaller {
+      color: #bdc3c7;
+      font-size: 20px;  
+    }
+  }
+
+  .shadow {
+    @include size(100%, 100%);
+    border: $default-size / 10 solid #bdc3c7;
+    border-radius: 50%;
+  }
+
+  &.style-2 {
+    .label {
+      background: none;
+      color: #7f8c8d;
+
+      .smaller {
+        color: #bdc3c7;
+      }
+    }
+  }
+  &.progress-20 {
+    @include draw-progress(20);
+  }
+  &.progress-25 {
+    @include draw-progress(25);
+  }
+  &.progress-30 {
+    @include draw-progress(30);
+  }
+  &.progress-35 {
+    @include draw-progress(35);
+  }
+  &.progress-40 {
+    @include draw-progress(40);
+  }
+  &.progress-45 {
+    @include draw-progress(45);
+  }
+  &.progress-50 {
+    @include draw-progress(50);
+  }
+  &.progress-55 {
+    @include draw-progress(55);
+  }
+  &.progress-65 {
+    @include draw-progress(65);
+  }
+  &.progress-65 {
+    @include draw-progress(60);
+  }
+  &.progress-75 {
+    @include draw-progress(75);
+  }
+  &.progress-80 {
+    @include draw-progress(80);
+  }
+  &.progress-85 {
+    @include draw-progress(85);
+  }
+  &.progress-95 {
+    @include draw-progress(95);
+  }
+  &.progress-100 {
+    @include draw-progress(100);
+  }
+}
+
