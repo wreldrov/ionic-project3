@@ -2,17 +2,60 @@
     .content-all{
         position: relative;
         z-index: 1;
-      }
-      &:after{
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        background-color: #ECEFF1;
-        z-index: 0;
-      }
+    }
+        &:after{
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background-color: #ECEFF1;
+            z-index: 0;
+        }
+        .lesson{
+            background-color: #fff;
+            margin: 18px;
+            border-radius: 5px;
+            li{
+                border-bottom: 1px solid #ECEFF1;
+                padding: 10px;
+            }
+            .date{
+                font-size: 14px;
+                position: relative;
+                padding-left: 20px;
+                display: inline-block;
+                margin: 0;
+                &:after{
+                      content: '';
+                      position: absolute;
+                      left: 0;
+                      background: url(../../../assets/img/date.PNG) no-repeat center center;
+                      background-size: contain;
+                      top: 2px;
+                      width: 13px;
+                      height: 13px;
+                  }
+              }
+              .time{
+                  font-size: 14px;
+                  display: inline-block;
+                  margin-left: 10px;
+              }
+              .teacher-name{
+                  font-size: 14px;
+                  padding-left: 8px;
+                  display: inline-block;
+                  margin: 0;
+              }
+              .teacher-img{
+                  width: 13px;
+                  height: 13px;
+                  border-radius: 100%;
+                  display: inline-block;
+              }
+        }
       h3{
         font-size: 18px;
         margin: 20px 18px 10px 18px;
@@ -74,5 +117,65 @@
               }
             }
         }
+    }
+
+    .bottom{
+        background-color: #fff;
+        padding: 10px;
+        margin: 18px;
+        border-radius: 5px;
+        h4{
+            font-size: 16px;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+        .one-line{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        label{
+            font-size: 13px;
+            margin: 10px 10px 10px 0;
+        }
+        input[type="checkbox"]{
+            display: inline-block;
+            border: none;
+                margin: 0;
+                position: relative;
+                background: none !important;
+                border-radius: 5px;
+                margin: 10px 20px 10px 0;
+                &:after{
+                    content: '';
+                    position: absolute;
+                    width: 18px;
+                    height: 18px;
+                    top: -4px;
+                    right: 0;
+                    left: -4px;
+                    bottom: 0;
+                    border-radius: 5px;
+                    background: #fff;
+                    border: 1px solid #2DBECD;
+            }
+            &:checked:after{
+                content: '';
+                background: url(../../../assets/img/check-2.png) no-repeat center center;
+                background-size: cover;
+                width: 20px;
+                height: 20px; 
+            }
+        }
+    }
+
+    .save-btn{
+        background: #2DBECD;
+        border-radius: 7px;
+        padding: 10px 30px;
+        font-size: 12px;
+        color: #fff;
+        float: right;
+        margin: 18px 18px 30px 0;
     }
 }
