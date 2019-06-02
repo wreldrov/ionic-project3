@@ -16,7 +16,7 @@
     </form>
     <ul class="schedule-list">
       <!-- класс active текущий, класс next следующий -->
-      <li class="active" *ngFor="let lesson of lessons">
+      <li class="{{ getClassName(lesson.lesson_time_index) }}" *ngFor="let lesson of lessons">
         <a [routerLink]="['/lesson/'+ lesson.id]">
           <div class="left">
             <span class="time">{{ lesson.lesson_time }}</span>

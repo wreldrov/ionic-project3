@@ -79,7 +79,6 @@ export class AppComponent {
   ) {
     this.auth.authUser.subscribe((res: Iuser) => {
       this.user = res;
-      console.log(this.user);
     });
     this.initializeApp();
   }

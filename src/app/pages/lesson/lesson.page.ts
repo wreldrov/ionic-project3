@@ -31,6 +31,7 @@ interface Ilesson {
   group: Igroup;
   lesson_date: string;
   lesson_time: string;
+  lesson_time_index: number;
   room: string;
   teacher: Iuser;
 }
