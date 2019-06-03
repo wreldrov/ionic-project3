@@ -112,3 +112,13 @@ ion-content{
 .inner-scroll{
     background: #ECEFF1 !important;
 }
+
+.no-content{
+    padding: 18px;
+    height: 100%;
+    p{
+        text-align: center;
+        color: rgb(157, 157, 157);
+        font-size: 14px;
+    }
+}
