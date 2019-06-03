@@ -19,18 +19,19 @@
       </li>
     </ul>
     <h3>Посещаемость</h3>
-    <ul class="student-list">
-      <li *ngFor="let att of attendance; let i = index">
-        <div class="left">
-          {{ i+1 +' ' }}
-          <img *ngIf="att.student.image" src="{{ att.student.image }}">
-          <p class="name">{{ att.student.surname +' '+ att.student.name }}</p>
-        </div>
-        <div class="right">
-          <input type="checkbox" name="is_exist" value="{{ att.is_exist }}">
-        </div>
-      </li>
-    </ul>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <ul class="student-list">
+        <li *ngFor="let att of attendance; let i = index">
+          <div class="left">
+            {{ i+1 +' ' }}
+            <img *ngIf="att.student.image" src="{{ att.student.image }}">
+            <p class="name">{{ att.student.surname +' '+ att.student.name }}</p>
+          </div>
+          <div class="right">
+            <input type="checkbox" [formControlName]="att.student.id" value="{{ att.is_exist }}">
+          </div>
+        </li>
+      </ul>
       <div *ngIf="user.role.name === 'admin'">
         <div class="bottom">
           <h4>Бонусы</h4>
@@ -51,6 +52,7 @@
           </div>
         </div>
       </div>
-    <button class="save-btn">Сохранить</button>
+      <button type="submit" class="save-btn">Сохранить</button>
+    </form>
   </div>
 </ion-content>

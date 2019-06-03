@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 interface Iuser {
   id: number;
@@ -51,13 +52,17 @@ export class LessonPage implements OnInit {
   user: Iuser;
   lesson: Ilesson;
   attendance: Iattendance[];
+  formGroup: FormGroup;
 
   constructor(
       private route: ActivatedRoute,
       private auth: AuthService,
       private http: HttpClient,
-      private datePipe: DatePipe
-  ) { }
+      private datePipe: DatePipe,
+      private formBuilder: FormBuilder,
+  ) {
+    this.formGroup = this.formBuilder.group({});
+  }
 
   ngOnInit() {
     this.route.params
@@ -71,6 +76,9 @@ export class LessonPage implements OnInit {
       this.lesson = res;
     });
     this.getAttendance().subscribe((res: Iattendance[]) => {
+      res.map((item: any) => {
+        this.formGroup.addControl(item.student.id, new FormControl(item.is_exist));
+      });
       this.attendance = res;
     });
   }
@@ -115,5 +123,31 @@ export class LessonPage implements OnInit {
 
   getDateString(lessonDate: string) {
     return this.datePipe.transform(new Date(lessonDate), 'MMM d');
+  }
+
+  onSubmit() {
+    console.log(this.formGroup.value);
+    this.saveAttendance().subscribe();
+  }
+
+  saveAttendance()
+  {
+    let header = new HttpHeaders();
+    header = header.append('Content-Type', 'application/json');
+    header = header.append('Authorization', `Bearer ${this.auth.token}`);
+    return this.http.put(`${this.auth.url}/api/igra/attendance/${this.id}`, this.formGroup.value, {headers: header}).pipe(
+        map((res: any) => {
+          console.log(res);
+          return res.data;
+        }),
+        catchError(e => {
+          const status = e.status;
+          if (status === 401) {
+            this.auth.showAlert('You are not authorized for this!');
+            this.auth.logout();
+          }
+          throw new Error(e);
+        })
+    );
   }
 }
