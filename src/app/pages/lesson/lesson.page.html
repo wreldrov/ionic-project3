@@ -8,73 +8,49 @@
   </ion-header>
 
 <ion-content class="attendance">
-  <div class="content-all">
+  <div *ngIf="lesson" class="content-all">
     <ul class="lesson">
       <li>
-          <p class="date">2 июнь</p><span class="time">11:00 - 11:50</span>
+          <p class="date">{{ getDateString(lesson.lesson_date) }}</p><span class="time">{{ lesson.lesson_time }}</span>
       </li>
       <li>
-          <img src="../../../assets/img/teacher-1.png" class="teacher-img">
-          <p class="teacher-name">Руслан Жумабек</p>
+          <img *ngIf="lesson.teacher.image" src="{{ lesson.teacher.image }}" class="teacher-img">
+          <p class="teacher-name">{{ lesson.teacher.surname +' '+ lesson.teacher.name }}</p>
       </li>
     </ul>
     <h3>Посещаемость</h3>
-  <ul class="student-list">
-    <li>
-      <div class="left">
-        <img src="../../../assets/img/teacher-1.png">
-        <p class="name">Арман Арманов</p>
-      </div>
-      <div class="right">
-        <input type="checkbox">
-      </div>
-    </li>
-    <li>
+    <ul class="student-list">
+      <li *ngFor="let att of attendance; let i = index">
         <div class="left">
-            <img src="../../../assets/img/teacher-1.png">
-            <p class="name">Арман Арманов</p>
-          </div>
-          <div class="right">
+          {{ i+1 +' ' }}
+          <img *ngIf="att.student.image" src="{{ att.student.image }}">
+          <p class="name">{{ att.student.surname +' '+ att.student.name }}</p>
+        </div>
+        <div class="right">
+          <input type="checkbox" name="is_exist" value="{{ att.is_exist }}">
+        </div>
+      </li>
+    </ul>
+      <div *ngIf="user.role.name === 'admin'">
+        <div class="bottom">
+          <h4>Бонусы</h4>
+          <div class="one-line">
+            <label>Проведение занятий по учебной программе</label>
             <input type="checkbox">
           </div>
-    </li>
-    <li>
-        <div class="left">
-            <img src="../../../assets/img/teacher-1.png">
-            <p class="name">Арман Арманов</p>
-          </div>
-          <div class="right">
+        </div>
+        <div class="bottom">
+          <h4>Штрафы</h4>
+          <div class="one-line">
+            <label>Штраф за опаздание</label>
             <input type="checkbox">
           </div>
-    </li>
-    <li>
-        <div class="left">
-            <img src="../../../assets/img/teacher-1.png">
-            <p class="name">Арман Арманов</p>
-          </div>
-          <div class="right">
+          <div class="one-line">
+            <label>Завершение занятия позже</label>
             <input type="checkbox">
           </div>
-    </li>
-  </ul>
-  <div class="bottom">
-      <h4>Бонусы</h4>
-      <div class="one-line">
-          <label>Проведение занятий по учебной программе</label>
-          <input type="checkbox">
+        </div>
       </div>
+    <button class="save-btn">Сохранить</button>
   </div>
-  <div class="bottom">
-      <h4>Штрафы</h4>
-      <div class="one-line">
-          <label>Штраф за опаздание</label>
-          <input type="checkbox">
-      </div>
-      <div class="one-line">
-          <label>Завершение занятия позже</label>
-          <input type="checkbox">
-      </div>
-  </div>
-  <button class="save-btn">Сохранить</button>
-</div>
 </ion-content>
