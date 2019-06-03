@@ -14,18 +14,19 @@
     <button class="search-btn">
     </button>
   </form>
-  <ul class="groups-list" *ngFor="let group of groups">
-    <li>
-      <a [routerLink]="['/group/'+ group.id]">
-        <div class="left">
-          <h4>{{ group.name }}</h4>
-          <p class="name">{{ group.course.name }}</p>
-        </div>
-        <div class="right">
-          <button class="next-btn"></button>
-        </div>
-      </a>
-    </li>
-  </ul>
+    <ul class="groups-list" *ngFor="let group of groups">
+      <li>
+        <a [routerLink]="['/group/'+ group.id]">
+          <div class="left">
+            <h4>{{ group.name }}</h4>
+            <p class="name">{{ group.course.name }}</p>
+          </div>
+          <div class="right">
+            <button class="next-btn"></button>
+          </div>
+        </a>
+      </li>
+    </ul>
+    <p *ngIf="groups === null">no content</p>
 </div>
 </ion-content>
