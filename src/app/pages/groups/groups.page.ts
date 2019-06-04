@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, map} from 'rxjs/operators';
+import {LoadingController, NavController} from '@ionic/angular';
 
 interface Iuser {
   id: number;
@@ -42,20 +43,33 @@ export class GroupsPage implements OnInit {
   user: Iuser;
   groups: Igroup[];
   name: string;
-
   constructor(
       private http: HttpClient,
       private auth: AuthService,
+      private loadingController: LoadingController
   ) {
-    this.auth.authUser.subscribe((res: Iuser) => {
-      this.user = res;
-    });
-    this.getGroupsData('').subscribe((res: Igroup[]) => {
-      this.groups = res;
-    });
+    this.getData();
   }
 
   ngOnInit() {
+  }
+
+  async getData() {
+    const loading = await this.loadingController.create({
+      spinner: 'bubbles',
+      message: 'Please wait...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading'
+    });
+    return await loading.present().then(() => {
+      this.auth.authUser.subscribe((res: Iuser) => {
+        this.user = res;
+      });
+      this.getGroupsData('').subscribe((res: Igroup[]) => {
+        this.groups = res;
+      });
+      loading.dismiss();
+    });
   }
 
   filterGroupsData() {
@@ -86,4 +100,5 @@ export class GroupsPage implements OnInit {
         })
     );
   }
+
 }

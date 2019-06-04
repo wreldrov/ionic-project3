@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, map} from 'rxjs/operators';
 import {AuthService} from '../../services/auth.service';
+import {LoadingController} from '@ionic/angular';
 
 interface Iuser {
   id: number;
@@ -46,20 +47,33 @@ export class GroupPage implements OnInit {
   constructor(
       private route: ActivatedRoute,
       private auth: AuthService,
-      private http: HttpClient
+      private http: HttpClient,
+      private loadingController: LoadingController
   ) {
   }
 
   ngOnInit() {
-    this.route.params
-        .subscribe((params: any) => {
-          this.id = params.id;
-        });
-    this.getGroupData().subscribe((res: Igroup) => {
-      this.group = res;
-    });
+    this.getData();
   }
 
+  async getData() {
+    const loading = await this.loadingController.create({
+      spinner: 'crescent',
+      message: 'Please wait...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading'
+    });
+    return await loading.present().then(() => {
+      this.route.params
+          .subscribe((params: any) => {
+            this.id = params.id;
+          });
+      this.getGroupData().subscribe((res: Igroup) => {
+        this.group = res;
+      });
+      loading.dismiss();
+    });
+  }
   getGroupData() {
     let header = new HttpHeaders();
     header = header.append('Content-Type', 'application/json');

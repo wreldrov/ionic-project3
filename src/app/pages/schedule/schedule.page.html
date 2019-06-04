@@ -14,7 +14,7 @@
         <ion-datetime display-format="MMM/ DD/ YYYY" [(ngModel)]="date" name="date" (ionChange)="getFilteredLessons()"></ion-datetime>
         <button class="schedule-btn" (ionChange)="getFilteredLessons()"></button>
     </form>
-    <ul *ngif="lessons" class="schedule-list">
+    <ul *ngIf="lessons != null && lessons.length != 0" class="schedule-list">
       <!-- класс active текущий, класс next следующий -->
       <li class="{{ getClassName(lesson.lesson_time_index) }}" *ngFor="let lesson of lessons">
         <a [routerLink]="['/lesson/'+ lesson.id]">
@@ -29,6 +29,6 @@
         </a>
       </li>
     </ul>
-    <p *ngIf="lessons === null">no content</p>
+    <p *ngIf="lessons == null || lessons.length == 0">no content</p>
   </div>
 </ion-content>

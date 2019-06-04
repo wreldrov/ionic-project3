@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {LoadingController} from '@ionic/angular';
 
 interface Iuser {
   id: number;
@@ -60,26 +61,40 @@ export class LessonPage implements OnInit {
       private http: HttpClient,
       private datePipe: DatePipe,
       private formBuilder: FormBuilder,
+      private loadingController: LoadingController
   ) {
     this.formGroup = this.formBuilder.group({});
   }
 
   ngOnInit() {
-    this.route.params
-        .subscribe((params: any) => {
-          this.id = params.id;
-        });
-    this.auth.authUser.subscribe((res: Iuser) => {
-      this.user = res;
+    this.getData();
+  }
+
+  async getData() {
+    const loading = await this.loadingController.create({
+      spinner: 'dots',
+      message: 'Please wait...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading'
     });
-    this.getLessonData().subscribe((res: Ilesson) => {
-      this.lesson = res;
-    });
-    this.getAttendance().subscribe((res: Iattendance[]) => {
-      res.map((item: any) => {
-        this.formGroup.addControl(item.student.id, new FormControl(item.is_exist));
+    return await loading.present().then(() => {
+      this.route.params
+          .subscribe((params: any) => {
+            this.id = params.id;
+          });
+      this.auth.authUser.subscribe((res: Iuser) => {
+        this.user = res;
       });
-      this.attendance = res;
+      this.getLessonData().subscribe((res: Ilesson) => {
+        this.lesson = res;
+      });
+      this.getAttendance().subscribe((res: Iattendance[]) => {
+        res.map((item: any) => {
+          this.formGroup.addControl(item.student.id, new FormControl(item.is_exist));
+        });
+        this.attendance = res;
+      });
+      loading.dismiss();
     });
   }
 
@@ -130,8 +145,7 @@ export class LessonPage implements OnInit {
     this.saveAttendance().subscribe();
   }
 
-  saveAttendance()
-  {
+  saveAttendance() {
     let header = new HttpHeaders();
     header = header.append('Content-Type', 'application/json');
     header = header.append('Authorization', `Bearer ${this.auth.token}`);

@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from '../../services/auth.service';
 import {catchError, map} from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
+import {LoadingController} from '@ionic/angular';
 
 interface Iuser {
   id: number;
@@ -51,26 +52,48 @@ export class SchedulePage implements OnInit {
   constructor(
       private http: HttpClient,
       private auth: AuthService,
-      private datePipe: DatePipe
+      private datePipe: DatePipe,
+      private loadingController: LoadingController
   ) {
-    this.auth.authUser.subscribe((res: Iuser) => {
-      this.user = res;
-    });
-    this.getLessonTime().subscribe(res => {
-      this.lessonTime = res;
-    });
-    this.getFilteredLessons();
+    this.getData();
   }
 
   ngOnInit() {
   }
 
-  getFilteredLessons() {
-    const date = new Date(this.date).toISOString().split('T')[0];
-    const filter = `?filter[lesson_date]=${date}`;
-    return this.getLessons(filter).subscribe((res: Ilesson[]) => {
-      this.lessons = res;
-      return this.lessons;
+  async getData() {
+    const loading = await this.loadingController.create({
+      spinner: 'circles',
+      message: 'Please wait...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading'
+    });
+    await loading.present().then(() => {
+      this.auth.authUser.subscribe((res: Iuser) => {
+        this.user = res;
+      });
+      this.getLessonTime().subscribe(res => {
+        this.lessonTime = res;
+      });
+      this.getFilteredLessons();
+      loading.dismiss();
+    });
+  }
+
+  async getFilteredLessons() {
+    const loading = await this.loadingController.create({
+      spinner: 'circles',
+      message: 'Please wait...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading'
+    });
+    await loading.present().then(() => {
+      const date = new Date(this.date).toISOString().split('T')[0];
+      const filter = `?filter[lesson_date]=${date}`;
+      this.getLessons(filter).subscribe((res: Ilesson[]) => {
+        this.lessons = res;
+      });
+      loading.dismiss();
     });
   }
 
