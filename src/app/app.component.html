@@ -20,7 +20,7 @@
                 </ion-label>
               </ion-item>
             </ion-menu-toggle>
-            <ion-item [routerDirection]="'root'" href="/logout" class="log_out">
+            <ion-item (click)="logout()" class="log_out">
               <ion-icon slot="start" name="exit"></ion-icon>
               <ion-label>
                 Выйти

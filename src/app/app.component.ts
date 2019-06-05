@@ -108,4 +108,9 @@ export class AppComponent {
   isAuthenticated() {
     return this.auth.isAuthenticated();
   }
+
+  logout() {
+    console.log("logout");
+    this.auth.logout();
+  }
 }

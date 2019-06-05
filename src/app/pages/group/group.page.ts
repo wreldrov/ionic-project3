@@ -70,8 +70,8 @@ export class GroupPage implements OnInit {
           });
       this.getGroupData().subscribe((res: Igroup) => {
         this.group = res;
+        loading.dismiss();
       });
-      loading.dismiss();
     });
   }
   getGroupData() {

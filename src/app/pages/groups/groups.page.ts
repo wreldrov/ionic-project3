@@ -67,8 +67,8 @@ export class GroupsPage implements OnInit {
       });
       this.getGroupsData('').subscribe((res: Igroup[]) => {
         this.groups = res;
+        loading.dismiss();
       });
-      loading.dismiss();
     });
   }
 

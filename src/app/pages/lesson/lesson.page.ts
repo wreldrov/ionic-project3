@@ -93,8 +93,8 @@ export class LessonPage implements OnInit {
           this.formGroup.addControl(item.student.id, new FormControl(item.is_exist));
         });
         this.attendance = res;
+        loading.dismiss();
       });
-      loading.dismiss();
     });
   }
 

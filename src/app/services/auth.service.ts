@@ -80,6 +80,7 @@ export class AuthService {
     this.storage.remove(TOKEN_KEY).then(() => {
       this.authenticationState.next(false);
     });
+    this.router.navigate(['login']);
   }
 
   getUserData() {

@@ -92,8 +92,8 @@ export class SchedulePage implements OnInit {
       const filter = `?filter[lesson_date]=${date}`;
       this.getLessons(filter).subscribe((res: Ilesson[]) => {
         this.lessons = res;
+        loading.dismiss();
       });
-      loading.dismiss();
     });
   }
 
