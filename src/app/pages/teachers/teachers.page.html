@@ -10,69 +10,27 @@
 <ion-content class="teachers">
   <div class="content-all">
     <form class="search">
-        <input type="search" placeholder="Поиск">
+        <input type="search" placeholder="Поиск" [(ngModel)]="name" name="name" (change)="filterTeachersData()">
         <button class="search-btn">
         </button>
       </form>
-<!--      <ul class="teachers-list">-->
-<!--        <li><a href="#">-->
-<!--          <div class="left">-->
-<!--            <div class="teacher-img">-->
-<!--                <img src="../../../assets/img/teacher.png">-->
-<!--            </div>-->
-<!--            <p class="name">Далер Кузяев</p>-->
-<!--          </div>-->
-<!--          <div class="right">-->
-<!--            <button class="message-btn"></button>-->
-<!--          </div>-->
-<!--        </a></li>-->
-<!--        <li><a href="#">-->
-<!--            <div class="left">-->
-<!--                <div class="teacher-img">-->
-<!--                    <img src="../../../assets/img/teacher.png">-->
-<!--                </div>-->
-<!--                <p class="name">Далер Кузяев</p>-->
-<!--              </div>-->
-<!--              <div class="right">-->
-<!--                <button class="message-btn"></button>-->
-<!--              </div>-->
-<!--        </a></li>-->
-<!--        <li><a href="#">-->
-<!--            <div class="left">-->
-<!--                <div class="teacher-img">-->
-<!--                  <img src="../../../assets/img/teacher.png">-->
-<!--                </div>-->
-<!--                <p class="name">Далер Кузяев</p>-->
-<!--              </div>-->
-<!--              <div class="right">-->
-<!--                <button class="message-btn"></button>-->
-<!--              </div>-->
-<!--        </a></li>-->
-<!--        <li><a href="#">-->
-<!--            <div class="left">-->
-<!--                <div class="teacher-img">-->
-<!--                    <img src="../../../assets/img/teacher.png">-->
-<!--                </div>-->
-<!--                <p class="name">Далер Кузяев</p>-->
-<!--              </div>-->
-<!--              <div class="right">-->
-<!--                <button class="message-btn"></button>-->
-<!--              </div>-->
-<!--        </a></li>-->
-<!--        <li><a href="#">-->
-<!--            <div class="left">-->
-<!--                <div class="teacher-img">-->
-<!--                    <img src="../../../assets/img/teacher.png">-->
-<!--                </div>-->
-<!--                <p class="name">Далер Кузяев</p>-->
-<!--              </div>-->
-<!--              <div class="right">-->
-<!--                <button class="message-btn"></button>-->
-<!--              </div>-->
-<!--        </a></li>-->
-<!--      </ul>-->
-        <div class="no-content">
-            <p>нет содержимого для отображения</p>
-        </div>
+      <ul *ngIf="teachers != null && teachers.length != 0" class="teachers-list">
+        <li *ngFor="let teacher of teachers">
+          <a href="#">
+            <div class="left">
+              <div class="teacher-img">
+                <img src="{{ teacher.image ? teacher.image : '../../../assets/img/no-photo.png' }}">
+              </div>
+              <p class="name">{{ teacher.surname +' '+ teacher.name }}</p>
+            </div>
+            <div class="right">
+              <button class="message-btn"></button>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <div *ngIf="teachers == null || teachers.length == 0" class="no-content">
+        <p>нет содержимого для отображения</p>
+      </div>
     </div>
 </ion-content>

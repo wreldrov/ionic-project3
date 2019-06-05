@@ -13,18 +13,18 @@
     <label>Преподаватели</label>
     <ul class="photos">
       <li *ngFor="let teacher of group.teachers">
-         <img *ngIf="teacher.image" src="{{ teacher.image }}">
+         <img src="{{ teacher.image ? teacher.image : '../../../assets/img/no-photo.png' }}">
       </li>
     </ul>
   </form>
   <ul class="student-list">
     <li *ngFor="let student of group.students; let i = index">
         <div class="left">
-          <p class="name">
               {{ i+1 }}
-              <img *ngIf="student.image" src="{{ student.image }}"><i *ngIf="student.image === null" class="fa fa-user">{{student.surname[0]}}</i>
-              {{ student.surname +' '+ student.name}}
-          </p>
+              <img src="{{ student.image ? student.image : '../../../assets/img/no-photo.png' }}">
+              <p class="name">
+                  {{ student.surname +' '+ student.name}}
+              </p>
         </div>
         <div class="right">
           <button class="message-btn"></button>

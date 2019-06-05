@@ -10,12 +10,85 @@
     </ion-toolbar>
   </ion-header>
 
-<ion-content padding>
+<ion-content class="home">
 
-<!--  <p>{{ user['email'] }}</p>-->
+  <div class="content-all">
+    <h3>Репертуары</h3>
+    <ul class="spectacle-list">
+      <li>
+        <a href="#">
+          <div class="date">12 август</div>
+          <div class="right">
+            <h4>Богемская рапсодия</h4>
+            <span class="room">малый зал</span>
+            <span class="time">12:00</span>
+          </div>
+        </a>
+      </li>
+      <li><a href="#">
+          <div class="date">12 август</div>
+          <div class="right">
+            <h4>Богемская рапсодия</h4>
+            <span class="room">малый зал</span>
+            <span class="time">11:00</span>
+          </div>
+      </a></li>
+      <li><a href="#">
+          <div class="date">12 август</div>
+          <div class="right">
+            <h4>Богемская рапсодия</h4>
+            <span class="room">малый зал</span>
+            <span class="time">15:00</span>
+          </div>
+      </a></li>
+      <li><a href="#">
+          <div class="date">12 август</div>
+          <div class="right">
+            <h4>Богемская рапсодия</h4>
+            <span class="room">малый зал</span>
+            <span class="time">13:00</span>
+          </div>
+      </a></li>
+    </ul>
 
-  <ion-button expand="full" (click)="loadUserInfo()">Load User Info</ion-button>
+    <h3>Новости</h3>
+    <ul class="spectacle-list">
+      <li>
+        <a href="#">
+          <div class="date">12 август</div>
+          <div class="right">
+            <h4>Богемская рапсодия</h4>
+            <span class="room">малый зал</span>
+            <span class="time">12:00</span>
+          </div>
+        </a>
+      </li>
+      <li><a href="#">
+          <div class="date">12 август</div>
+          <div class="right">
+            <h4>Богемская рапсодия</h4>
+            <span class="room">малый зал</span>
+            <span class="time">11:00</span>
+          </div>
+      </a></li>
+      <li><a href="#">
+          <div class="date">12 август</div>
+          <div class="right">
+            <h4>Богемская рапсодия</h4>
+            <span class="room">малый зал</span>
+            <span class="time">15:00</span>
+          </div>
+      </a></li>
+      <li><a href="#">
+          <div class="date">12 август</div>
+          <div class="right">
+            <h4>Богемская рапсодия</h4>
+            <span class="room">малый зал</span>
+            <span class="time">13:00</span>
+          </div>
+      </a></li>
+    </ul>
+  </div>
   <ion-button expand="full" (click)="logout()">Logout</ion-button>
-  <ion-button expand="full" (click)="clearToken()">Clear JWT</ion-button>
 
 </ion-content>

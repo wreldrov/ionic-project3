@@ -99,10 +99,14 @@ ion-content{
                 }
                 .left{
                     padding-left: 15px;
+                    display: flex;
+                    align-items: center;
                     img{
-                        width: 25px;
-                        height: 25px;
+                        width: 22px;
+                        height: 22px;
                         border-radius: 100%;
+                        margin: 0 5px;
+                        border: 1px solid #ECEFF1;
                     }
                 }
                 .right{

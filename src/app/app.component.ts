@@ -36,37 +36,37 @@ export class AppComponent {
       title: 'Профиль',
       url: '/profile',
       icon: 'person',
-      roles: ['admin', 'teacher', 'student']
+      roles: ['Admin', 'Teacher', 'Student']
     },
     {
       title: 'Группы',
       url: '/groups',
       icon: 'list',
-      roles: ['admin', 'teacher']
+      roles: ['Admin', 'Teacher']
     },
     {
       title: 'Рассписания',
       url: '/schedule',
       icon: 'paper',
-      roles: ['admin', 'teacher', 'student']
+      roles: ['Admin', 'Teacher', 'Student']
     },
     {
       title: 'Домашное задание',
       url: '/homework',
       icon: 'list-box',
-      roles: ['student']
+      roles: ['Student']
     },
     {
       title: 'Учителя',
       url: '/teachers',
       icon: 'school',
-      roles: ['admin', 'student']
+      roles: ['Admin', 'Student']
     },
     {
       title: 'Messenger',
       url: '/messenger',
       icon: 'chatboxes',
-      roles: ['admin', 'teacher', 'student']
+      roles: ['Admin', 'Teacher', 'Student']
     }
   ];
 
