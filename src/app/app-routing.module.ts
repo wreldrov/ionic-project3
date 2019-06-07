@@ -10,12 +10,14 @@ const routes: Routes = [
   { path: 'schedule',   loadChildren: './pages/schedule/schedule.module#SchedulePageModule', canActivate: [AuthGuardService] },
   { path: 'group/:id',  loadChildren: './pages/group/group.module#GroupPageModule',          canActivate: [AuthGuardService] },
   { path: 'lesson/:id', loadChildren: './pages/lesson/lesson.module#LessonPageModule',       canActivate: [AuthGuardService] },
-  { path: 'profile',    loadChildren: './pages/profile/profile.module#ProfilePageModule' },
-  { path: 'messenger',  loadChildren: './pages/messenger/messenger.module#MessengerPageModule' },
-  { path: 'teachers',   loadChildren: './pages/teachers/teachers.module#TeachersPageModule' },
-  { path: 'profile1',   loadChildren: './pages/profile1/profile1.module#Profile1PageModule' },
-  { path: 'finance',    loadChildren: './pages/finance/finance.module#FinancePageModule' },
-  { path: 'chat',       loadChildren: './pages/chat/chat.module#ChatPageModule' },
+  { path: 'student',    loadChildren: './pages/student/student.module#StudentPageModule',    canActivate: [AuthGuardService] },
+  { path: 'teacher',    loadChildren: './pages/teacher/teacher.module#TeacherPageModule',    canActivate: [AuthGuardService] },
+  { path: 'profile',    loadChildren: './pages/profile/profile.module#ProfilePageModule',    canActivate: [AuthGuardService] },
+  { path: 'messenger',  loadChildren: './pages/messenger/messenger.module#MessengerPageModule', canActivate: [AuthGuardService] },
+  { path: 'teachers',   loadChildren: './pages/teachers/teachers.module#TeachersPageModule', canActivate: [AuthGuardService] },
+  { path: 'profile1',   loadChildren: './pages/profile1/profile1.module#Profile1PageModule', canActivate: [AuthGuardService] },
+  { path: 'finance',    loadChildren: './pages/finance/finance.module#FinancePageModule',    canActivate: [AuthGuardService] },
+  { path: 'chat',       loadChildren: './pages/chat/chat.module#ChatPageModule',             canActivate: [AuthGuardService] },
 
 
 

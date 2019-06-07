@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import {LoadingController, Platform} from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {AuthService} from './services/auth.service';
@@ -32,11 +32,23 @@ export class AppComponent {
   user: Iuser;
 
   public appMenus = [
+    // {
+    //   title: 'Профиль',
+    //   url: '/admin',
+    //   icon: 'person',
+    //   roles: ['Admin']
+    // },
     {
       title: 'Профиль',
-      url: '/profile',
+      url: '/teacher',
       icon: 'person',
-      roles: ['Admin', 'Teacher', 'Student']
+      roles: ['Teacher']
+    },
+    {
+      title: 'Профиль',
+      url: '/student',
+      icon: 'person',
+      roles: ['Student']
     },
     {
       title: 'Группы',
@@ -76,11 +88,25 @@ export class AppComponent {
     private statusBar: StatusBar,
     private auth: AuthService,
     private router: Router,
+    private loadingController: LoadingController
   ) {
-    this.auth.authUser.subscribe((res: Iuser) => {
-      this.user = res;
-    });
     this.initializeApp();
+    this.getData();
+  }
+
+  async getData() {
+    const loading = await this.loadingController.create({
+      spinner: 'bubbles',
+      message: 'Please wait...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading'
+    });
+    return await loading.present().then(() => {
+      this.auth.authUser.subscribe((res: Iuser) => {
+        this.user = res;
+        loading.dismiss();
+      });
+    });
   }
 
   initializeApp() {
@@ -110,7 +136,6 @@ export class AppComponent {
   }
 
   logout() {
-    console.log("logout");
     this.auth.logout();
   }
 }

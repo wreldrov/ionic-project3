@@ -4,28 +4,30 @@
       <ion-content *ngIf="isAuthenticated()">
         <div class="content">
           <ion-list>
-              <div class="avatar">
-                  <img src="../assets/img/avatar-bg.png" class="avatar-img">
+              <div *ngIf="user" class="avatar">
+                  <img src="{{ user.image ? user.image : '../../../assets/img/no-photo.png' }}" class="avatar-img">
                   <div class="avatar-bg">
-                    <img src="../assets/img/avatar-bg.png">
+                    <img src="{{ user.image ? user.image : '../../../assets/img/no-photo.png' }}">
                   </div>
-                  <h3 class="name">Teacher Teacherov</h3>
+                  <h3 class="name">{{ user.surname +' '+ user.name }}</h3>
                     <a href="#" class="avatar-email">teacherschool@gmail.com</a>
               </div>
-            <ion-menu-toggle auto-hide="false" *ngFor="let p of appMenus">
-              <ion-item *ngIf="user && p.roles.indexOf(user.role.name) !== -1" [routerDirection]="'root'" [routerLink]="[p.url]">
-                <ion-icon slot="start" [name]="p.icon"></ion-icon>
+            <ion-menu-toggle auto-hide="false">
+              <div *ngFor="let p of appMenus">
+                <ion-item *ngIf="user && p.roles.indexOf(user.role.name) !== -1" [routerDirection]="'root'" [routerLink]="[p.url]">
+                  <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                  <ion-label>
+                    {{p.title}}
+                  </ion-label>
+                </ion-item>
+              </div>
+              <ion-item (click)="logout()" class="log_out">
+                <ion-icon slot="start" name="exit"></ion-icon>
                 <ion-label>
-                  {{p.title}}
+                  Выйти
                 </ion-label>
               </ion-item>
             </ion-menu-toggle>
-            <ion-item (click)="logout()" class="log_out">
-              <ion-icon slot="start" name="exit"></ion-icon>
-              <ion-label>
-                Выйти
-              </ion-label>
-            </ion-item>
           </ion-list>
         </div>
       </ion-content>

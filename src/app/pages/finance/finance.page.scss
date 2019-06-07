@@ -65,20 +65,20 @@ $label-font-size-redo: $default-size * 4;
 
 @mixin draw-progress($progress) {
   .pie {
-    
+
     &.lesson{
         .half-circle {
-            border-color: #7C4DFF;   
+            border-color: #7C4DFF;
         }
     }
     &.bonus{
         .half-circle {
-            border-color: #A5CD50;   
+            border-color: #A5CD50;
         }
     }
     &.fine{
         .half-circle {
-            border-color: #F5A5B9;   
+            border-color: #F5A5B9;
         }
     }
 
@@ -102,7 +102,7 @@ $label-font-size-redo: $default-size * 4;
 
 @mixin draw-progress--solid($progress, $color, $bg-color) {
   background: linear-gradient(to right, $color 50%, $bg-color 50%);
-  
+
   &:before {
     @if $progress <= 50 {
       background: $bg-color;
@@ -126,7 +126,7 @@ $label-font-size-redo: $default-size * 4;
   float: left;
   margin: 15px;
   position: relative;
-  
+
   &:nth-child(3n + 1) {
     clear: both;
   }
@@ -164,7 +164,7 @@ $label-font-size-redo: $default-size * 4;
 
     .smaller {
       color: #bdc3c7;
-      font-size: 20px;  
+      font-size: 20px;
     }
   }
 

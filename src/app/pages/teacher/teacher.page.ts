@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../../services/auth.service';
 import {LoadingController} from '@ionic/angular';
@@ -20,11 +20,11 @@ interface Irole {
   name: string;
 }
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.page.html',
-  styleUrls: ['./profile.page.scss'],
+  selector: 'app-teacher',
+  templateUrl: 'teacher.page.html',
+  styleUrls: ['teacher.page.scss']
 })
-export class ProfilePage implements OnInit {
+export class TeacherPage {
   user: Iuser;
 
   constructor(
@@ -33,9 +33,6 @@ export class ProfilePage implements OnInit {
       private loadingController: LoadingController
   ) {
     this.getData();
-  }
-
-  ngOnInit() {
   }
 
   async getData() {
