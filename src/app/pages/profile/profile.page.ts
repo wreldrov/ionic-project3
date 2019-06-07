@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../../services/auth.service';
-import {LoadingController} from '@ionic/angular';
+import {ActionSheetController, LoadingController} from '@ionic/angular';
 
 interface Iuser {
   id: number;
@@ -30,7 +30,7 @@ export class ProfilePage implements OnInit {
   constructor(
       private http: HttpClient,
       private auth: AuthService,
-      private loadingController: LoadingController
+      private loadingController: LoadingController,
   ) {
     this.getData();
   }
