@@ -67,6 +67,7 @@ export class TeacherPage {
         {
           text: 'Редактировать профиль',
           role: 'destructive',
+          cssClass: 'edit-profile-btn',
           handler: () => {
             this.router.navigate(['profile-edit']);
           }

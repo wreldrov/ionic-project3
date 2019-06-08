@@ -8,22 +8,26 @@
 </ion-header>
 
 
-<ion-content overflow-scroll="true">
-  <div class="content-white" *ngIf="user">
+<ion-content overflow-scroll="true" class="edit-profile">
+  <div class="content-all" *ngIf="user">
+    <h3>Ваш профиль</h3>
     <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form">
+      <div class="edit-img">
+        <img src="{{ user.image ? user.image : '../../../assets/img/no-photo.png' }}">
+      </div>
       <ul class="info" *ngIf="user">
+          <li>
+              <div class="top">
+                <span class="label">Имя</span>
+              </div>
+              <input type="text" name="name" formControlName="name" [value]="user.name">
+            </li>
         <li>
           <div class="top">
             <span class="label">Фамилия</span>
           </div>
           <input type="text" name="surname" formControlName="surname" [value]="user.surname">
-        </li>
-        <li>
-          <div class="top">
-            <span class="label">Имя</span>
-          </div>
-          <input type="text" name="name" formControlName="name" [value]="user.name">
-        </li>
+        </li>    
         <li *ngIf="user.role.id == 3">
           <div class="top">
             <span class="label">Фамилия родителя</span>
@@ -55,6 +59,7 @@
           </div>
         </li>
       </ul>
+      <button type="submit" expand="full" color="primary" class="back-btn">Назад</button>
       <button type="submit" expand="full" color="primary">Сохранить</button>
     </form>
   </div>
