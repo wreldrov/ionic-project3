@@ -1,53 +1,53 @@
 <ion-content overflow-scroll="true" class="profile-tab">
   <div class="content-white">
     <ul class="info" *ngIf="user">
-      <li>
+      <li class="email">
         <div class="top">
           <span class="label">Почта</span>
           <h5 class="value">{{ user.email }}</h5>
         </div>
       </li>
-      <li *ngIf="user.role.id == 3">
+      <li *ngIf="user.role.id == 3" class="parent_name">
         <div class="top">
           <span class="label">Имя родителя</span>
         </div>
         <h5>{{ user.parent_surname +' '+ user.parent_name }}</h5>
       </li>
-      <li>
+      <li class="birthday">
         <div class="top">
           <span class="label">День рождения</span>
           <h5 class="value">{{ getDateString(user.birthday) }}</h5>
         </div>
       </li>
-      <li>
+      <li class="phone_number">
         <div class="top">
           <span class="label">Телефон</span>
           <h5 class="value">{{ user.phone_number }}</h5>
         </div>
       </li>
-      <li>
+      <li class="address">
         <div class="top">
           <span class="label">Адрес</span>
           <h5 class="value">{{ user.address }}</h5>
         </div>
       </li>
-      <li *ngIf="user.role.id == 2">
+      <li *ngIf="user.role.id == 2" class="experience">
         <div class="top">
           <span class="label">Стаж</span>
           <h5 class="value">{{ user.experience }}</h5>
         </div>
       </li>
-      <li *ngIf="user.role.id == 2">
+      <li *ngIf="user.role.id == 2" class="profession">
         <div class="top">
           <span class="label">Профессия</span>
           <h5 class="value">{{ user.profession }}</h5>
         </div>
       </li>
-      <li *ngIf="user.role.id == 2">
+      <li *ngIf="user.role.id == 2" class="about">
         <div class="top">
           <span class="label">О себе</span>
         </div>
-        <p>{{ user.about }}</p>
+        <div [innerHTML]="user.about" class="about"></div>
       </li>
     </ul>
   </div>
