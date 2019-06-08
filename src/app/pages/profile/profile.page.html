@@ -1,36 +1,53 @@
 <ion-content overflow-scroll="true" class="profile-tab">
   <div class="content-white">
-    <ul class="info">
-      <li>
-        <div class="top">
-          <span class="label">О себе</span>
-          <h5 class="value">Дина Утепова</h5>
-        </div>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-      </li>
+    <ul class="info" *ngIf="user">
       <li>
         <div class="top">
           <span class="label">Почта</span>
-          <h5 class="value">a.kalieva@gmail.com</h5>
+          <h5 class="value">{{ user.email }}</h5>
+        </div>
+      </li>
+      <li *ngIf="user.role.id == 3">
+        <div class="top">
+          <span class="label">Имя родителя</span>
+        </div>
+        <h5>{{ user.parent_surname +' '+ user.parent_name }}</h5>
+      </li>
+      <li>
+        <div class="top">
+          <span class="label">День рождения</span>
+          <h5 class="value">{{ getDateString(user.birthday) }}</h5>
         </div>
       </li>
       <li>
         <div class="top">
           <span class="label">Телефон</span>
-          <h5 class="value">8 (778) 266 06 05</h5>
+          <h5 class="value">{{ user.phone_number }}</h5>
         </div>
       </li>
       <li>
+        <div class="top">
+          <span class="label">Адрес</span>
+          <h5 class="value">{{ user.address }}</h5>
+        </div>
+      </li>
+      <li *ngIf="user.role.id == 2">
         <div class="top">
           <span class="label">Стаж</span>
-          <h5 class="value">10 лет</h5>
+          <h5 class="value">{{ user.experience }}</h5>
         </div>
       </li>
-      <li>
+      <li *ngIf="user.role.id == 2">
         <div class="top">
           <span class="label">Профессия</span>
-          <h5 class="value">Преподаватель</h5>
+          <h5 class="value">{{ user.profession }}</h5>
         </div>
+      </li>
+      <li *ngIf="user.role.id == 2">
+        <div class="top">
+          <span class="label">О себе</span>
+        </div>
+        <p>{{ user.about }}</p>
       </li>
     </ul>
   </div>

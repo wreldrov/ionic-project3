@@ -3,7 +3,7 @@
     <img src="../../../assets/img/profile-bg.png">
     <div class="title-block-profile">
       <ion-menu-button></ion-menu-button>
-      <button class="edit-btn"><ion-icon name="more"></ion-icon></button>
+      <button class="edit-btn" (click)="presentActionSheet()"><ion-icon name="more"></ion-icon></button>
     </div>
     <div class="data">
       <div class="profile-img"><img src="{{ user.image ? user.image : '../../../assets/img/no-photo.png' }}"></div> 

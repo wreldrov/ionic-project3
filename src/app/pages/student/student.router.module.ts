@@ -17,11 +17,11 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'financial',
+        path: 'finance',
         children: [
           {
             path: '',
-            loadChildren: '../financial/financial.module#FinancialPageModule'
+            loadChildren: '../finance/finance.module#FinancePageModule'
           }
         ]
       },

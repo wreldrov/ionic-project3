@@ -31,7 +31,7 @@
                       content: '';
                       position: absolute;
                       left: 0;
-                      background: url(../../../assets/img/date.PNG) no-repeat center center;
+                      background: url('/../../../assets/img/date.PNG') no-repeat center center;
                       background-size: contain;
                       top: 2px;
                       width: 13px;
@@ -88,7 +88,7 @@
                 padding-right: 15px;
                 input[type="checkbox"]{
                   border: none;
-                  margin: 0;
+                  //margin: 0;
                   position: relative;
                   background: none !important;
                   border-radius: 5px;
@@ -109,7 +109,7 @@
                   }
                   &:checked:after{
                       content: '';
-                      background: url(../../../assets/img/check-2.png) no-repeat center center;
+                      background: url('/../../../assets/img/check-2.png') no-repeat center center;
                       background-size: cover;
                       width: 20px;
                       height: 20px; 
@@ -141,7 +141,7 @@
         input[type="checkbox"]{
             display: inline-block;
             border: none;
-                margin: 0;
+                //margin: 0;
                 position: relative;
                 background: none !important;
                 border-radius: 5px;
@@ -161,7 +161,7 @@
             }
             &:checked:after{
                 content: '';
-                background: url(../../../assets/img/check-2.png) no-repeat center center;
+                background: url('/../../../assets/img/check-2.png') no-repeat center center;
                 background-size: cover;
                 width: 20px;
                 height: 20px; 

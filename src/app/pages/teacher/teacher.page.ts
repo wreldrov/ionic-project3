@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../../services/auth.service';
-import {LoadingController} from '@ionic/angular';
+import {ActionSheetController, LoadingController} from '@ionic/angular';
+import {Router} from '@angular/router';
 
 interface Iuser {
   id: number;
@@ -30,7 +31,9 @@ export class TeacherPage {
   constructor(
       private http: HttpClient,
       private auth: AuthService,
-      private loadingController: LoadingController
+      private loadingController: LoadingController,
+      private actionSheet: ActionSheetController,
+      private router: Router
   ) {
     this.getData();
   }
@@ -48,5 +51,36 @@ export class TeacherPage {
         loading.dismiss();
       });
     });
+  }
+
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheet.create({
+      mode: 'ios',
+      buttons: [
+        {
+          text: 'Отмена',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Редактировать профиль',
+          role: 'destructive',
+          handler: () => {
+            this.router.navigate(['profile-edit']);
+          }
+        },
+        {
+          text: 'Сменить пароль',
+          role: 'destructive',
+          cssClass: 'primary',
+          handler: () => {
+            console.log('Add clicked');
+          }
+        }
+      ]
+    });
+    await actionSheet.present();
   }
 }

@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="title-block">
+      <ion-menu-button></ion-menu-button>
+      <h4 class="page-title">Редактировать профиль</h4>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content overflow-scroll="true">
+  <div class="content-white" *ngIf="user">
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form">
+      <ul class="info" *ngIf="user">
+        <li>
+          <div class="top">
+            <span class="label">Фамилия</span>
+          </div>
+          <input type="text" name="surname" formControlName="surname" [value]="user.surname">
+        </li>
+        <li>
+          <div class="top">
+            <span class="label">Имя</span>
+          </div>
+          <input type="text" name="name" formControlName="name" [value]="user.name">
+        </li>
+        <li *ngIf="user.role.id == 3">
+          <div class="top">
+            <span class="label">Фамилия родителя</span>
+          </div>
+          <input type="text" name="parent_surname" formControlName="parent_surname" [value]="user.parent_surname">
+        </li>
+        <li *ngIf="user.role.id == 3">
+          <div class="top">
+            <span class="label">Имя родителя</span>
+          </div>
+          <input type="text" name="parent_name" formControlName="parent_name" [value]="user.parent_name">
+        </li>
+        <li>
+          <div class="top">
+            <span class="label">День рождения</span>
+            <ion-datetime display-format="DD/MM/YYYY" formControlName="birthday" name="birthday" [value]="user.birthday"></ion-datetime>
+          </div>
+        </li>
+        <li>
+          <div class="top">
+            <span class="label">Телефон</span>
+            <input type="text" formControlName="phone_number" name="phone_number" [value]="user.phone_number">
+          </div>
+        </li>
+        <li>
+          <div class="top">
+            <span class="label">Адрес</span>
+            <input type="text" formControlName="address" name="address" [value]="user.address">
+          </div>
+        </li>
+      </ul>
+      <button type="submit" expand="full" color="primary">Сохранить</button>
+    </form>
+  </div>
+</ion-content>

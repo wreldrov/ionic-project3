@@ -15,6 +15,17 @@ interface Iuser {
   birthday: string;
   phone_number: string;
   role: Irole;
+  parent_surname: string;
+  parent_name: string;
+  experience: string;
+  profession: string;
+  about: string;
+  group: Igroup;
+}
+interface Igroup {
+  id: number;
+  name: string;
+  course_id: number;
 }
 interface Irole {
   id: number;
