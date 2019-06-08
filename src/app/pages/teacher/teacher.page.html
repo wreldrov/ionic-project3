@@ -6,7 +6,7 @@
       <button class="edit-btn"><ion-icon name="more"></ion-icon></button>
     </div>
     <div class="data">
-      <img src="{{ user.image ? user.image : '../../../assets/img/no-photo.png' }}">
+      <div class="profile-img"><img src="{{ user.image ? user.image : '../../../assets/img/no-photo.png' }}"></div> 
       <h4 class="name">{{ user.surname +' '+ user.name }}</h4>
     </div>
   </ion-toolbar>
@@ -16,11 +16,11 @@
 
   <ion-tab-bar slot="top" class="profile">
     <ion-tab-button tab="profile">
-      <ion-label>Profile</ion-label>
+      <ion-label>Профиль</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="finance">
-      <ion-label>Finance</ion-label>
+      <ion-label>Финансы</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 

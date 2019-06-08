@@ -5,7 +5,7 @@
         <div class="content">
           <ion-list>
               <div *ngIf="user" class="avatar">
-                  <img src="{{ user.image ? user.image : '../../../assets/img/no-photo.png' }}" class="avatar-img">
+                  <div class="avatar-img"> <img src="{{ user.image ? user.image : '../../../assets/img/no-photo.png' }}"></div>
                   <div class="avatar-bg">
                     <img src="{{ user.image ? user.image : '../../../assets/img/no-photo.png' }}">
                   </div>
