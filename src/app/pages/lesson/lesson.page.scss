@@ -31,7 +31,7 @@
                       content: '';
                       position: absolute;
                       left: 0;
-                      background: url(../../../assets/img/date.PNG) no-repeat center center;
+                      background: url('../../../assets/img/date.PNG') no-repeat center center;
                       background-size: contain;
                       top: 2px;
                       width: 13px;
@@ -109,7 +109,7 @@
                   }
                   &:checked:after{
                       content: '';
-                      background: url(../../../assets/img/check-2.png) no-repeat center center;
+                      background: url('../../../assets/img/check-2.png') no-repeat center center;
                       background-size: cover;
                       width: 20px;
                       height: 20px; 
