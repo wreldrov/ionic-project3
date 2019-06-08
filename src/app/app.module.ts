@@ -19,7 +19,7 @@ export function jwtOptionsFactory(storage) {
       tokenGetter: () => {
         return storage.get('access_token').then((value) => {});
       },
-      whitelistedDomains: ['http://192.168.0.108:8000']
+      whitelistedDomains: ['http://diplom.test']
     };
 }
 

@@ -141,7 +141,6 @@ export class LessonPage implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formGroup.value);
     this.saveAttendance().subscribe();
   }
 
@@ -151,7 +150,6 @@ export class LessonPage implements OnInit {
     header = header.append('Authorization', `Bearer ${this.auth.token}`);
     return this.http.put(`${this.auth.url}/api/igra/attendance/${this.id}`, this.formGroup.value, {headers: header}).pipe(
         map((res: any) => {
-          console.log(res);
           return res.data;
         }),
         catchError(e => {

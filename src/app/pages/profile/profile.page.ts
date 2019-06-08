@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../../services/auth.service';
-import {ActionSheetController, LoadingController} from '@ionic/angular';
+import {LoadingController} from '@ionic/angular';
+import {DatePipe} from '@angular/common';
 
 interface Iuser {
   id: number;
@@ -14,6 +15,17 @@ interface Iuser {
   birthday: string;
   phone_number: string;
   role: Irole;
+  parent_surname: string;
+  parent_name: string;
+  experience: string;
+  profession: string;
+  about: string;
+  group: Igroup;
+}
+interface Igroup {
+  id: number;
+  name: string;
+  course_id: number;
 }
 interface Irole {
   id: number;
@@ -31,6 +43,7 @@ export class ProfilePage implements OnInit {
       private http: HttpClient,
       private auth: AuthService,
       private loadingController: LoadingController,
+      private datePipe: DatePipe,
   ) {
     this.getData();
   }
@@ -51,5 +64,9 @@ export class ProfilePage implements OnInit {
         loading.dismiss();
       });
     });
+  }
+
+  getDateString(date: string) {
+    return this.datePipe.transform(new Date(date), 'MMM d yy');
   }
 }

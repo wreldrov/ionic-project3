@@ -16,7 +16,9 @@ const routes: Routes = [
   { path: 'messenger',  loadChildren: './pages/messenger/messenger.module#MessengerPageModule', canActivate: [AuthGuardService] },
   { path: 'teachers',   loadChildren: './pages/teachers/teachers.module#TeachersPageModule', canActivate: [AuthGuardService] },
   { path: 'finance',    loadChildren: './pages/finance/finance.module#FinancePageModule',    canActivate: [AuthGuardService] },
-  { path: 'chat',       loadChildren: './pages/chat/chat.module#ChatPageModule',             canActivate: [AuthGuardService] },
+  { path: 'chat',       loadChildren: './pages/chat/chat.module#ChatPageModule',             canActivate: [AuthGuardService] },  { path: 'profile-edit', loadChildren: './pages/profile-edit/profile-edit.module#ProfileEditPageModule' },
+  { path: 'change-password', loadChildren: './pages/change-password/change-password.module#ChangePasswordPageModule' },
+
 
 
 

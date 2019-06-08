@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../../services/auth.service';
 import {ActionSheetController, LoadingController} from '@ionic/angular';
+import {Router} from '@angular/router';
 
 interface Iuser {
   id: number;
@@ -32,6 +33,7 @@ export class TeacherPage {
       private auth: AuthService,
       private loadingController: LoadingController,
       private actionSheet: ActionSheetController,
+      private router: Router
   ) {
     this.getData();
   }
@@ -66,7 +68,7 @@ export class TeacherPage {
           text: 'Редактировать профиль',
           role: 'destructive',
           handler: () => {
-            console.log('Add clicked');
+            this.router.navigate(['profile-edit']);
           }
         },
         {
