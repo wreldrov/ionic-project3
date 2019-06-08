@@ -76,7 +76,7 @@ export class TeacherPage {
           role: 'destructive',
           cssClass: 'primary',
           handler: () => {
-            console.log('Add clicked');
+            this.router.navigate(['change-password']);
           }
         }
       ]

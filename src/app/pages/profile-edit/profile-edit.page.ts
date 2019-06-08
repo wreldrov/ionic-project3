@@ -83,10 +83,8 @@ export class ProfileEditPage implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formGroup.valid);
     const birthday = this.formGroup.value.birthday;
     this.formGroup.value.birthday = this.datePipe.transform(birthday, 'yyyy-MM-dd');
-    console.log(this.formGroup.value);
     this.updateUserData().subscribe();
   }
 
