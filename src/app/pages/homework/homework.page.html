@@ -10,15 +10,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="lessons">
+<ion-content *ngIf="lessons" class="homework">
+  <div class="content-all">
   <h3>Домашняя задания</h3>
   <ul>
-    <li *ngFor="let lesson of lessons" [class]="lesson.active ? 'active' : ''">
+    <li *ngFor="let lesson of lessons" [class]="lesson.active ? '' : ''">
       <a target="_blank" [href]="lesson.homework.file">
-        <h5>{{ lesson.homework.name }}</h5>
-        <p>{{ lesson.date }}</p>
-        <p>{{ lesson.teacher.surname +' '+ lesson.teacher.name }}</p>
+        <div class="left">
+            <h5>{{ lesson.homework.name }}</h5>
+        </div>
+            <p class="date">{{ lesson.date }}</p>
+            <p class="name">{{ lesson.teacher.surname +' '+ lesson.teacher.name }}</p>
       </a>
     </li>
   </ul>
+</div>
 </ion-content>

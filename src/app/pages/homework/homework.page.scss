@@ -1,0 +1,99 @@
+ion-content{
+    position: relative;
+    .content-all{
+      position: relative;
+      z-index: 1;
+    }
+    &:after{
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: #ECEFF1;
+      z-index: 0;
+    }
+}
+.homework{
+    h3{
+        font-size: 18px;
+        margin: 15px;
+    }
+    ul{
+        margin: 15px;  
+        li{
+            padding: 25px 10px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 2px 6px 10px rgba(45, 190, 205, 0.12);
+            position: relative;
+            &.active{
+                border: 0.5px solid #2DBECD;
+                a .left h5{
+                    &:after{
+                        background: url(../../../assets/img/homework.PNG) no-repeat center center;
+                        background-size: contain;
+                    }
+                }
+            }
+            a{
+                text-decoration: none;
+                color: #000;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .left{
+                    h5{
+                        font-size: 16px;
+                        position: relative;
+                        margin: 0;
+                        padding-left: 25px;
+                        &:after{
+                            content: '';
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            bottom: 0;
+                            width: 20px;
+                            height: 24px;
+                            background: url(../../../assets/img/homeworkG.PNG) no-repeat center center;
+                            background-size: contain;
+                        }
+                    }
+                }
+                p{
+                    margin: 0;
+                    &.date{
+                        position: absolute;
+                        top: 5px;
+                        font-size: 8px;
+                        color: #757575;
+                        right: 13px;
+                    }
+                    &.name{
+                        position: absolute;
+                        right: 30px;
+                        bottom: 6px;
+                        padding-right: 25px;
+                        font-size: 10px;
+                        padding: 2px;
+                        background-color: #1BE1AF;
+                        border-radius: 10px;
+                        color: #fff;
+                        &:after{
+                            content: '';
+                            position: absolute;
+                            right: -20px;
+                            top: 0;
+                            background: url(../../../assets/img/list-item.PNG) no-repeat center center;
+                            background-size: contain;
+                            width: 18px;
+                            height: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
