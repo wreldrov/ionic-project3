@@ -1,0 +1,44 @@
+<ion-header *ngIf="user" class="profile-header">
+  <ion-toolbar class="profile-bg">
+    <img src="../../../assets/img/profile-bg.png">
+    <div class="title-block-profile">
+      <ion-menu-button></ion-menu-button>
+      <button class="edit-btn" (click)="presentActionSheet()"><ion-icon name="more"></ion-icon></button>
+    </div>
+    <div class="data">
+      <div class="profile-img"><img src="{{ user.image ? user.image : '../../../assets/img/no-photo.png' }}"></div>
+      <h4 class="name">{{ user.surname +' '+ user.name }}</h4>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content overflow-scroll="true" class="profile-tab">
+  <div class="content-white">
+    <ul class="info" *ngIf="user">
+      <li class="email">
+        <div class="top">
+          <span class="label">Почта</span>
+          <h5 class="value">{{ user.email }}</h5>
+        </div>
+      </li>
+      <li class="birthday">
+        <div class="top">
+          <span class="label">День рождения</span>
+          <h5 class="value">{{ getDateString(user.birthday) }}</h5>
+        </div>
+      </li>
+      <li class="phone_number">
+        <div class="top">
+          <span class="label">Телефон</span>
+          <h5 class="value">{{ user.phone_number }}</h5>
+        </div>
+      </li>
+      <li class="address">
+        <div class="top">
+          <span class="label">Адрес</span>
+          <h5 class="value">{{ user.address }}</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+</ion-content>

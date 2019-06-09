@@ -21,10 +21,9 @@
     <h3>Посещаемость</h3>
     <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
       <ul class="student-list">
-        <li *ngFor="let att of attendance; let i = index">
+        <li *ngFor="let att of attendance">
           <div class="left">
-            {{ i+1 +' ' }}
-            <img *ngIf="att.student.image" src="{{ att.student.image }}">
+            <img src="{{ att.student.image ? att.student.image : '../../../assets/img/no-photo.png' }}">
             <p class="name">{{ att.student.surname +' '+ att.student.name }}</p>
           </div>
           <div class="right">
@@ -32,26 +31,31 @@
           </div>
         </li>
       </ul>
-      <div *ngIf="user.role.name === 'admin'">
+      <div *ngIf="user.role.id === 1 && lesson && attendance">
         <div class="bottom">
           <h4>Бонусы</h4>
           <div class="one-line">
-            <label>Проведение занятий по учебной программе</label>
-            <input type="checkbox">
+            <label>В группе более 11 человек (+20%)</label>
+            <input type="checkbox" formControlName="bonus1" [value]="attendance.length > 11" disabled="disabled">
+          </div>
+          <div class="one-line">
+            <label>Проведение занятий по учебной программе (+10%)</label>
+            <input type="checkbox" formControlName="bonus2" [value]="lesson.bonus2">
           </div>
         </div>
         <div class="bottom">
           <h4>Штрафы</h4>
           <div class="one-line">
-            <label>Штраф за опаздание</label>
-            <input type="checkbox">
+            <label>Штраф за опаздание (-20%)</label>
+            <input type="checkbox" formControlName="fine1" [value]="lesson.fine1">
           </div>
           <div class="one-line">
-            <label>Завершение занятия позже</label>
-            <input type="checkbox">
+            <label>Завершение занятия позже (-10%)</label>
+            <input type="checkbox" formControlName="fine2" [value]="lesson.fine2">
           </div>
         </div>
       </div>
+      <button type="button" class="back-btn" (click)="backBtn()">Назад</button>
       <button type="submit" class="save-btn">Сохранить</button>
     </form>
   </div>

@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'schedule',   loadChildren: './pages/schedule/schedule.module#SchedulePageModule', canActivate: [AuthGuardService] },
   { path: 'group/:id',  loadChildren: './pages/group/group.module#GroupPageModule',          canActivate: [AuthGuardService] },
   { path: 'lesson/:id', loadChildren: './pages/lesson/lesson.module#LessonPageModule',       canActivate: [AuthGuardService] },
+  { path: 'admin',      loadChildren: './pages/admin/admin.module#AdminPageModule',          canActivate: [AuthGuardService] },
   { path: 'student',    loadChildren: './pages/student/student.module#StudentPageModule',    canActivate: [AuthGuardService] },
   { path: 'teacher',    loadChildren: './pages/teacher/teacher.module#TeacherPageModule',    canActivate: [AuthGuardService] },
   { path: 'profile',    loadChildren: './pages/profile/profile.module#ProfilePageModule',    canActivate: [AuthGuardService] },
@@ -22,7 +23,6 @@ const routes: Routes = [
     canActivate: [AuthGuardService] },
   { path: 'change-password', loadChildren: './pages/change-password/change-password.module#ChangePasswordPageModule',
     canActivate: [AuthGuardService] },
-
 ];
 
 @NgModule({

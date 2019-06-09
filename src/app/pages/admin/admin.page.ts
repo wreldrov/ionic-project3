@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../../services/auth.service';
 import {ActionSheetController, LoadingController} from '@ionic/angular';
 import {Router} from '@angular/router';
+import {DatePipe} from '@angular/common';
 
 interface Iuser {
   id: number;
@@ -21,11 +22,11 @@ interface Irole {
   name: string;
 }
 @Component({
-  selector: 'app-student',
-  templateUrl: 'student.page.html',
-  styleUrls: ['student.page.scss']
+  selector: 'app-admin',
+  templateUrl: './admin.page.html',
+  styleUrls: ['./admin.page.scss'],
 })
-export class StudentPage {
+export class AdminPage implements OnInit {
   user: Iuser;
 
   constructor(
@@ -33,9 +34,14 @@ export class StudentPage {
       private auth: AuthService,
       private loadingController: LoadingController,
       private actionSheet: ActionSheetController,
-      private router: Router
+      private router: Router,
+      private datePipe: DatePipe,
   ) {
     this.getData();
+  }
+
+
+  ngOnInit(): void {
   }
 
   async getData() {
@@ -83,5 +89,9 @@ export class StudentPage {
       ]
     });
     await actionSheet.present();
+  }
+
+  getDateString(date: string) {
+    return this.datePipe.transform(new Date(date), 'MMM d yy');
   }
 }

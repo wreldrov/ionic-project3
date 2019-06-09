@@ -104,3 +104,87 @@ ion-tab-bar{
     }
   }
 }
+.profile-tab{
+  .content-white{
+    background: #fff !important;
+  }
+  .info{
+    padding: 20px 20px 20px 50px;
+    li{
+      padding: 30px 0 0 0;
+      border-bottom: 1px solid #ECEFF1;
+      .top{
+        position: relative;
+        .label{
+          color: #C6C6C6;
+          font-size: 12px;
+        }
+        .value{
+          font-size: 15px;
+          margin: 0;
+          font-weight: 600;
+        }
+        &:after{
+          content: '';
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          background-size: contain;
+          width: 39px;
+          height: 38px;
+        }
+
+      }
+      .about{
+        font-size: 9px;
+        padding: 0 20px 0 0;
+      }
+      p{
+        font-size: 6px;
+      }
+      &.about{
+        .top{
+          &:after{
+            background: url(../../../assets/img/chat.PNG) no-repeat center center;
+          }
+        }
+      }
+      &.email{
+        .top{
+          &:after{
+            background: url(../../../assets/img/message.PNG) no-repeat center center;
+          }
+        }
+      }
+      &.phone_number{
+        .top{
+          &:after{
+            background: url(../../../assets/img/phone.PNG) no-repeat center center;
+          }
+        }
+      }
+      &.experience{
+        .top{
+          &:after{
+            background: url(../../../assets/img/staj.PNG) no-repeat center center;
+          }
+        }
+      }
+      &.profession{
+        .top{
+          &:after{
+            background: url(../../../assets/img/teacher-icon.PNG) no-repeat center center;
+          }
+        }
+      }
+      &.parent_name{
+        .top{
+          &:after{
+            background: url(../../../assets/img/people_24px.png) no-repeat center center;
+          }
+        }
+      }
+    }
+  }
+}

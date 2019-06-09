@@ -94,7 +94,9 @@ export class ProfileEditPage implements OnInit {
     header = header.append('Authorization', `Bearer ${this.auth.token}`);
     return this.http.put(`${this.auth.url}/api/igra/user/${this.user.id}`, this.formGroup.value, {headers: header}).pipe(
         map((res: any) => {
-          if (this.user.role.id === 2) {
+          if (this.user.role.id === 1) {
+            this.router.navigateByUrl('/admin');
+          } else if (this.user.role.id === 2) {
             this.router.navigateByUrl('/teacher');
           } else if (this.user.role.id === 3) {
             this.router.navigateByUrl('/student');
@@ -111,4 +113,13 @@ export class ProfileEditPage implements OnInit {
     );
   }
 
+  backBtn() {
+    if (this.user.role.id === 1) {
+      return this.router.navigate(['admin']);
+    } else if (this.user.role.id === 2) {
+      return this.router.navigate(['teacher']);
+    } else if (this.user.role.id === 3) {
+      return this.router.navigate(['student']);
+    }
+  }
 }

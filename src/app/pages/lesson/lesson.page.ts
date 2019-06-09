@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
@@ -36,6 +36,10 @@ interface Ilesson {
   lesson_time: string;
   lesson_time_index: number;
   room: string;
+  bonus1: boolean;
+  bonus2: boolean;
+  fine1: boolean;
+  fine2: boolean;
   teacher: Iuser;
 }
 interface Iattendance {
@@ -61,7 +65,8 @@ export class LessonPage implements OnInit {
       private http: HttpClient,
       private datePipe: DatePipe,
       private formBuilder: FormBuilder,
-      private loadingController: LoadingController
+      private loadingController: LoadingController,
+      private router: Router
   ) {
     this.formGroup = this.formBuilder.group({});
   }
@@ -87,6 +92,10 @@ export class LessonPage implements OnInit {
       });
       this.getLessonData().subscribe((res: Ilesson) => {
         this.lesson = res;
+        this.formGroup.addControl('bonus1', new FormControl(this.lesson.bonus1));
+        this.formGroup.addControl('bonus2', new FormControl(this.lesson.bonus2));
+        this.formGroup.addControl('fine1', new FormControl(this.lesson.fine1));
+        this.formGroup.addControl('fine2', new FormControl(this.lesson.fine2));
       });
       this.getAttendance().subscribe((res: Iattendance[]) => {
         res.map((item: any) => {
@@ -150,7 +159,9 @@ export class LessonPage implements OnInit {
     header = header.append('Authorization', `Bearer ${this.auth.token}`);
     return this.http.put(`${this.auth.url}/api/igra/attendance/${this.id}`, this.formGroup.value, {headers: header}).pipe(
         map((res: any) => {
-          return res.data;
+          this.attendance = res.data;
+          this.router.navigate(['schedule']);
+          return this.attendance;
         }),
         catchError(e => {
           const status = e.status;
@@ -161,5 +172,9 @@ export class LessonPage implements OnInit {
           throw new Error(e);
         })
     );
+  }
+
+  backBtn() {
+    this.router.navigateByUrl('/schedule');
   }
 }

@@ -1,14 +1,26 @@
-<ion-tabs>
+<ion-header *ngIf="user" class="profile-header">
+  <ion-toolbar class="profile-bg">
+    <img src="../../../assets/img/profile-bg.png">
+    <div class="title-block-profile">
+      <ion-menu-button></ion-menu-button>
+      <button class="edit-btn" (click)="presentActionSheet()"><ion-icon name="more"></ion-icon></button>
+    </div>
+    <div class="data">
+      <div class="profile-img"><img src="{{ user.image ? user.image : '../../../assets/img/no-photo.png' }}"></div>
+      <h4 class="name">{{ user.surname +' '+ user.name }}</h4>
+    </div>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-tab-bar slot="bottom">
+<ion-tabs *ngIf="user">
+
+  <ion-tab-bar slot="top" class="profile">
     <ion-tab-button tab="profile">
-      <ion-icon name="flash"></ion-icon>
-      <ion-label>Profile</ion-label>
+      <ion-label>Профиль</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="financial">
-      <ion-icon name="apps"></ion-icon>
-      <ion-label>Financial</ion-label>
+    <ion-tab-button tab="finance">
+      <ion-label>Финансы</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 

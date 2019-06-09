@@ -109,7 +109,7 @@
                   }
                   &:checked:after{
                       content: '';
-                      background: url('/../../../assets/img/check-2.png') no-repeat center center;
+                      background: url('../../../assets/img/check-2.png') no-repeat center center;
                       background-size: cover;
                       width: 20px;
                       height: 20px; 
@@ -161,7 +161,7 @@
             }
             &:checked:after{
                 content: '';
-                background: url('/../../../assets/img/check-2.png') no-repeat center center;
+                background: url('../../../assets/img/check-2.png') no-repeat center center;
                 background-size: cover;
                 width: 20px;
                 height: 20px; 
@@ -177,5 +177,14 @@
         color: #fff;
         float: right;
         margin: 18px 18px 30px 0;
+    }
+    .back-btn{
+      float: left;
+      background-color: #2DBECD;
+      border-radius: 7px;
+      padding: 10px 20px;
+      color: #fff;
+      float: left;
+      margin: 10px 0 30px 0;
     }
 }

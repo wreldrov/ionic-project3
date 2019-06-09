@@ -42,12 +42,12 @@ export class AppComponent {
   user: Iuser;
 
   public appMenus = [
-    // {
-    //   title: 'Профиль',
-    //   url: '/admin',
-    //   icon: 'person',
-    //   roles: ['Admin']
-    // },
+    {
+      title: 'Профиль',
+      url: '/admin',
+      icon: 'person',
+      roles: ['Admin']
+    },
     {
       title: 'Профиль',
       url: '/teacher',

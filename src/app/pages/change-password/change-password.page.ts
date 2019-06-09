@@ -72,7 +72,9 @@ export class ChangePasswordPage implements OnInit {
     header = header.append('Authorization', `Bearer ${this.auth.token}`);
     return this.http.post(`${this.auth.url}/api/auth/change-password/${this.user.id}`, this.formGroup.value, {headers: header}).pipe(
         map((res: any) => {
-          if (this.user.role.id === 2) {
+          if (this.user.role.id === 1) {
+            this.router.navigateByUrl('/admin');
+          } else if (this.user.role.id === 2) {
             this.router.navigateByUrl('/teacher');
           } else if (this.user.role.id === 3) {
             this.router.navigateByUrl('/student');
@@ -91,5 +93,15 @@ export class ChangePasswordPage implements OnInit {
           throw new Error(e);
         })
     );
+  }
+
+  backBtn() {
+    if (this.user.role.id === 1) {
+      this.router.navigateByUrl('/admin');
+    } else if (this.user.role.id === 2) {
+      this.router.navigateByUrl('/teacher');
+    } else if (this.user.role.id === 3) {
+      this.router.navigateByUrl('/student');
+    }
   }
 }
