@@ -73,7 +73,7 @@ export class AppComponent {
       roles: ['Admin', 'Teacher', 'Student']
     },
     {
-      title: 'Домашное задание',
+      title: 'Домашняя задание',
       url: '/homework',
       icon: 'list-box',
       roles: ['Student']

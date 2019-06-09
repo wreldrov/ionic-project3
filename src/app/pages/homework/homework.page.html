@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="title-block">
+      <ion-menu-button></ion-menu-button>
+      <h4 class="page-title">Igra</h4>
+      <button class="logout-btn" (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="lessons">
+  <h3>Домашняя задания</h3>
+  <ul>
+    <li *ngFor="let lesson of lessons" [class]="lesson.active ? 'active' : ''">
+      <a target="_blank" [href]="lesson.homework.file">
+        <h5>{{ lesson.homework.name }}</h5>
+        <p>{{ lesson.date }}</p>
+        <p>{{ lesson.teacher.surname +' '+ lesson.teacher.name }}</p>
+      </a>
+    </li>
+  </ul>
+</ion-content>

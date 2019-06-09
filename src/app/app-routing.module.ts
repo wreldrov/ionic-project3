@@ -13,15 +13,15 @@ const routes: Routes = [
   { path: 'student',    loadChildren: './pages/student/student.module#StudentPageModule',    canActivate: [AuthGuardService] },
   { path: 'teacher',    loadChildren: './pages/teacher/teacher.module#TeacherPageModule',    canActivate: [AuthGuardService] },
   { path: 'profile',    loadChildren: './pages/profile/profile.module#ProfilePageModule',    canActivate: [AuthGuardService] },
-  { path: 'messenger',  loadChildren: './pages/messenger/messenger.module#MessengerPageModule', canActivate: [AuthGuardService] },
+  { path: 'messenger', loadChildren: './pages/messenger/messenger.module#MessengerPageModule', canActivate: [AuthGuardService] },
   { path: 'teachers',   loadChildren: './pages/teachers/teachers.module#TeachersPageModule', canActivate: [AuthGuardService] },
   { path: 'finance',    loadChildren: './pages/finance/finance.module#FinancePageModule',    canActivate: [AuthGuardService] },
-  { path: 'chat',       loadChildren: './pages/chat/chat.module#ChatPageModule',             canActivate: [AuthGuardService] },  { path: 'profile-edit', loadChildren: './pages/profile-edit/profile-edit.module#ProfileEditPageModule' },
-  { path: 'change-password', loadChildren: './pages/change-password/change-password.module#ChangePasswordPageModule' },
-
-
-
-
+  { path: 'chat',       loadChildren: './pages/chat/chat.module#ChatPageModule',             canActivate: [AuthGuardService] },
+  { path: 'homework',   loadChildren: './pages/homework/homework.module#HomeworkPageModule', canActivate: [AuthGuardService] },
+  { path: 'profile-edit', loadChildren: './pages/profile-edit/profile-edit.module#ProfileEditPageModule',
+    canActivate: [AuthGuardService] },
+  { path: 'change-password', loadChildren: './pages/change-password/change-password.module#ChangePasswordPageModule',
+    canActivate: [AuthGuardService] },
 
 ];
 
