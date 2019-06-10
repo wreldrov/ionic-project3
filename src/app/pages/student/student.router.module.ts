@@ -4,7 +4,7 @@ import { StudentPage } from './student.page';
 
 const routes: Routes = [
   {
-    path: 'student',
+    path: 'student/student',
     component: StudentPage,
     children: [
       {
@@ -17,24 +17,15 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'finance',
-        children: [
-          {
-            path: '',
-            loadChildren: '../finance/finance.module#FinancePageModule'
-          }
-        ]
-      },
-      {
         path: '',
-        redirectTo: '/student/profile',
+        redirectTo: 'student/student/profile',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/student/profile',
+    redirectTo: 'student/student/profile',
     pathMatch: 'full'
   }
 ];
