@@ -1,10 +1,10 @@
 <ion-content overflow-scroll="true" class="finance-tab">
     <div class="content-white">
-      <ul class="finance-list">
+      <ul class="finance-list" *ngIf="salary">
         <li class="lessons">
           <div class="left">
                 <div class="pie-wrapper progress-80 style-2">
-                    <span class="label">80<span class="smaller">%</span></span>
+                    <span class="label">{{ salary.lesson }}<span class="smaller">%</span></span>
                     <div class="pie lesson">
                       <div class="left-side half-circle"></div>
                       <div class="right-side half-circle"></div>
@@ -21,7 +21,7 @@
         <li class="bonuses">
           <div class="left">
               <div class="pie-wrapper progress-40 style-2">
-                  <span class="label">40<span class="smaller">%</span></span>
+                  <span class="label">{{ salary.bonus }}<span class="smaller">%</span></span>
                   <div class="pie bonus">
                     <div class="left-side half-circle"></div>
                     <div class="right-side half-circle"></div>
@@ -37,7 +37,7 @@
         <li class="fines">
           <div class="left">
               <div class="pie-wrapper progress-60 style-2">
-                  <span class="label">60<span class="smaller">%</span></span>
+                  <span class="label">{{ salary.fine }}<span class="smaller">%</span></span>
                   <div class="pie fine">
                     <div class="left-side half-circle"></div>
                     <div class="right-side half-circle"></div>
@@ -54,7 +54,7 @@
 
       <div class="total-price">
         <p>Итоговая сумма:</p>
-        <h6>120 000</h6><span>₸</span>
+        <h6>{{ salary.total }}</h6><span>₸</span>
       </div>
     </div>
 </ion-content>
