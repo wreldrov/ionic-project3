@@ -11,12 +11,12 @@
   <div class="main">
     <div class="chat-box">
         <div class="message-area">
-          <div class="message">
-            <img src="../../../assets/img/profile-img.png">
+          <div class="message" *ngFor="let chat of chats">
+          <img src="{{ chat.from.image ? chat.from.image : '../../../assets/img/no-photo.png' }}">
             <div class="message-text">
-                <p>привет</p>
-                <span class="name">Сара</span>
-                <span class="time">вчера, 11:45 </span>
+                <p>{{ chat.message }}</p>
+                <span class="name">{{ chat.from.surname +' '+ chat.from.name}}</span>
+<!--                <span class="time">вчера, 11:45 </span>-->
             </div>
           </div>
         </div>
@@ -24,13 +24,13 @@
           <!-- emoji-panel component comes here -->
         </div>
         <div class="input-area">
-          <form >
-            <ion-input type="text" name="message" id="message" placeholder="Сообщение..."></ion-input>
+          <form>
+            <ion-input type="text" [(ngModel)]="message" name="message" id="message" placeholder="Сообщение..."></ion-input>
             <button>
-              <ion-icon name="send"></ion-icon>
+              <ion-icon (click)="sendMessage()" name="send"></ion-icon>
             </button>
           </form>
         </div>
-      </div>
-      </div>
+    </div>
+  </div>
 </ion-content>

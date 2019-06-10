@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'messenger', loadChildren: './pages/messenger/messenger.module#MessengerPageModule', canActivate: [AuthGuardService] },
   { path: 'teachers',   loadChildren: './pages/teachers/teachers.module#TeachersPageModule', canActivate: [AuthGuardService] },
   { path: 'finance',    loadChildren: './pages/finance/finance.module#FinancePageModule',    canActivate: [AuthGuardService] },
-  { path: 'chat',       loadChildren: './pages/chat/chat.module#ChatPageModule',             canActivate: [AuthGuardService] },
+  { path: 'chat/:id',       loadChildren: './pages/chat/chat.module#ChatPageModule',             canActivate: [AuthGuardService] },
   { path: 'homework',   loadChildren: './pages/homework/homework.module#HomeworkPageModule', canActivate: [AuthGuardService] },
   { path: 'profile-edit', loadChildren: './pages/profile-edit/profile-edit.module#ProfileEditPageModule',
     canActivate: [AuthGuardService] },
